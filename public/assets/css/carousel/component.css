@@ -1,0 +1,83 @@
+.carousel-body {
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+}
+
+.carousel-body .item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-body .owl-nav {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    right: -10px;
+    z-index: -1;
+}
+
+.carousel-body .owl-nav .owl-prev {
+    margin-left: -44px;
+}
+
+.carousel-body .owl-nav .owl-next {
+    margin-right: -24px;
+}
+
+.carousel-body .owl-nav .owl-prev i,
+.carousel-body .owl-nav .owl-next i {
+    display: flex;
+    align-items: center;
+    color: #ff0000;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    padding: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.carousel-body .owl-nav .owl-prev i:hover,
+.carousel-body .owl-nav .owl-next i:hover {
+    transition: 0.5s;
+    color: #fff;
+    background-color: #ff0000;
+}
+
+
+/* carousel controll top mention specially*/
+
+#shop-by-category .content-shop {
+    border: 1px solid #dee2e6;
+}
+
+#shop-by-category .content-shop:hover {
+    border: 1px solid rgb(246, 0, 0);
+}
+
+#shop-by-category .owl-nav {
+    top: 80px;
+}
+
+#shop-by-category .owl-nav .owl-prev i,
+#shop-by-category .owl-nav .owl-next i {
+    height: 200px;
+}
+
+#new-arrivals-product .owl-nav {
+    top: 80px;
+}
+
+#new-arrivals-product .owl-nav .owl-prev i,
+#new-arrivals-product .owl-nav .owl-next i {
+    height: 200px;
+}
+
+#new-arrivals-product a #our-brand-company .owl-nav {
+    top: 17px;
+}
+
+#our-brand-company .owl-nav {
+    top: 18px;
+}

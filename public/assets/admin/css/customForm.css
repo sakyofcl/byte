@@ -1,0 +1,48 @@
+.card-form .form-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+    color: white;
+}
+
+.card-form {
+    border-radius: 10px;
+    background: white;
+}
+
+.card-form .form-body .form-row {
+    padding: 10px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.card-form .form-body .form-row .rawinput {
+    appearance: none;
+    margin: 0 0;
+    height: 35px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: #e8ebed;
+    color: #576366;
+    font-size: 14px;
+}
+
+.card-form .form-footer {
+    margin: 0 25px 15px 25px;
+    padding: 15px 10px;
+}
+
+.error{
+    border:1px solid red!important;
+    transition:0.5s;
+}
+.noerror{
+    border:1px solid rgb(101, 168, 0) !important;
+}
