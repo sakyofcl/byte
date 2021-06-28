@@ -38,12 +38,20 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-md-10">
+                    @if (Session::has('msg'))
+                    <div class="alert alert-success w-100 mt-2" role="alert">
+                        {{ Session::get('msg') }}
+                    </div>
+                    @endif
                     <div class="login_wrap">
+
                         <div class="padding_eight_all bg-white">
+
                             <div class="heading_s1">
-                                 <h3>Drop a message !</h3>
+                                <h3>Drop a message !</h3>
                             </div>
-                            <form method="post">
+                            <form action="/contact-mail" method="post">
+                                @csrf
                                 <div class="form-group">
                                     <input type="text" required="" class="form-control" name="name" placeholder="Enter Your Name">
                                 </div>
@@ -51,7 +59,10 @@
                                     <input type="text" required="" class="form-control" name="email" placeholder="Enter Your Email">
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control"  rows="3" placeholder="Message!"></textarea>
+                                    <input type="number" required="" class="form-control" name="phone" placeholder="Enter Your Number">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="3" name="msg" placeholder="Message!"></textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -78,4 +89,5 @@
 
 
 </body>
+
 </html>

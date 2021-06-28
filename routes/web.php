@@ -7,7 +7,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\adminOrderController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Http\Request;
+
 Route::get('/', [HomeController::class, 'index']);
 
 
@@ -16,10 +18,9 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', function () {
     return view('about');
 });
-
-Route::get('/contact', function () {
-    return view('contact');
-});
+/*-------[ contact ]--------*/
+Route::get('/contact', [ContactController::class, 'index']);
+Route::post('/contact-mail', [ContactController::class, 'sendMail']);
 Route::get('/register', function () {
     return view('register');
 });
@@ -48,8 +49,8 @@ Route::post('add-main-category', [CategoryController::class, 'add']);
 Route::post('add-sub-category', [CategoryController::class, 'addSub']);
 Route::get('deletecategory/{id}', [CategoryController::class, 'deletecategory']);
 Route::get('deletesubcategory/{id}', [CategoryController::class, 'deletesubcategory']);
-Route::post('edit-maincat-name',[CategoryController::class,'editMaincatName']);
-Route::post('edit-subcat-name',[CategoryController::class,'editSubcatName']);
+Route::post('edit-maincat-name', [CategoryController::class, 'editMaincatName']);
+Route::post('edit-subcat-name', [CategoryController::class, 'editSubcatName']);
 
 Route::get('/product', [ProductController::class, 'index']);
 Route::get('/product/{main}', [ProductController::class, 'showMainCategory']);
@@ -60,7 +61,7 @@ Route::post('addproduct', [ProductController::class, 'storeproduct']);
 Route::post('/store-updates', [ProductController::class, 'storeUpdates']);
 Route::get('testing/{id}', [ProductController::class, 'find_subcat']);
 Route::get('/delete/product/', [ProductController::class, 'deleteproduct']);
-Route::get('/search/{q?}',[ProductController::class, 'searchList']);
+Route::get('/search/{q?}', [ProductController::class, 'searchList']);
 
 Route::get('/order', [adminOrderController::class, 'index']);
 
@@ -75,7 +76,7 @@ Route::get('/testmain/{id}', [ProductController::class, 'testmain']);
 
 /* checkout route*/
 Route::get('/checkout/{id}', [OrderController::class, 'index']);
-Route::get('/checkout', ['middleware'=>'checkout','uses'=>'OrderController@default']);
+Route::get('/checkout', ['middleware' => 'checkout', 'uses' => 'OrderController@default']);
 Route::post('/store', [OrderController::class, 'store']);
 
 
