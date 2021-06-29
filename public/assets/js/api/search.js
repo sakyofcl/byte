@@ -12,10 +12,12 @@ $(document).ready(() => {
     bufferimage = "<img src='assets/images/buffer.gif' style='width:15px;height:15px;'>";
 
     const productListCart = (i, l, pid) => {
+        let pname=l.replace(/\//g,'-');
+        pname=pname.replace(/\s/g,'-'); 
         return `
         <div class="col-6 w-100 p-1">
             <div class="search-cart-wrapper d-flex flex-column p-1 border">
-                <a href="/productinfo/${l}/${pid}"><img src="/products/${i}" style="height:100px;"></a>
+                <a href="/productinfo/${pname}/${pid}"><img src="/products/${i}" style="height:100px;"></a>
             </div>
         </div>
         `
