@@ -531,7 +531,7 @@
 
                                         <h6 class="product_title pl-1 pr-1 text-center">
 
-                                            <a class="text-uppercase text-center" href="/productinfo/{{strtolower( preg_replace('/\s+/','-', $item->name) ) }}/{{ $item->pid }}">{{ $item->name }}</a>
+                                            <a class="text-uppercase text-center" href="/productinfo/{{str_replace(' ', '-', str_replace('/', '-', $item->name)) }}/{{ $item->pid }}">{{ $item->name }}</a>
 
                                         </h6>
 

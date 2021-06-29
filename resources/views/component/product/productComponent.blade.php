@@ -37,7 +37,7 @@ function productCart($img, $pid, $name, $price, $description)
             <div class="product_info">
 
                 <h6 class="product_title">
-                    <a href="/productinfo/' . $name . '/' . $pid . '">' . $name . '</a>
+                    <a href="/productinfo/' . str_replace(' ', '-', str_replace('/', '-', $name))  . '/' . $pid . '">' . $name . '</a>
                 </h6>
 
                 <div class="product_price">
