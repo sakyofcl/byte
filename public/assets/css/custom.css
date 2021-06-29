@@ -154,3 +154,10 @@
     color: blue;
     text-decoration: underline;
 }
+
+/*home-carousel-product-image*/
+@media (max-width: 400px) {
+    .home-carousel-product-image {
+        height: 326px !important;
+    }
+}
