@@ -3,17 +3,8 @@ $(document).ready(()=>{
     
     let editElement=$('.product-edit-btn');
     
-    var protocol = window.location.protocol.replace(/:/g,'');
-    
-    let url=""
-    if(protocol=="http"){
-        url = 'http://byte.lk/api/edit/product?pid=';    
-    }
-    else{
-        url = 'https://byte.lk/api/edit/product?pid=';
-    }
-    
-    
+    let url="/api/edit/product?pid=";
+     
     function editHandleClick(e){
         let updateFormRootWrapper=$("#updateFormRootWrapper");
         updateFormRootWrapper.css('display','block')

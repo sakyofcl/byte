@@ -29,7 +29,7 @@ $(document).ready(() => {
     }
 
     //apiurl
-    const apiurl = 'https://byte.lk/api/search';
+    const apiurl = '/api/search';
 
     //hide btn default
     searchBtn.attr('disabled', true);

@@ -14,14 +14,7 @@ $(document).ready(() => {
     $('#catid').on('change', (e) => {
         if (e.target.name == 'catid') {
             if (e.target.value) {
-                let url=""
-                if(protocol=="http"){
-                    url = 'http://byte.lk/api/get-sub-category';    
-                }
-                else{
-                    url = 'https://byte.lk/api/get-sub-category';
-                }
-                
+                let url="/api/get-sub-category";
                 axios.get(url, { headers: { 'main': e.target.value } }).then((response) => {
 
                     const subcat = response.data.sub;
