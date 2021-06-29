@@ -6,8 +6,7 @@
 
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap"
-    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
 {{-- bootstrap 4 --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" />
@@ -20,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/linearicons.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flaticon.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/simple-line-icons.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 {{-- end --}}
 
 {{-- carousel --}}

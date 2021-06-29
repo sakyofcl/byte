@@ -36,6 +36,76 @@
     <!-- START LOGIN SECTION -->
     <div class="login_register_wrap section">
         <div class="container">
+
+            <div class="contact-info row">
+                <div class="col-12 col-md-2 p-2">
+                    <div class="contact-info-item bg_gray border">
+                        <div class="ico-box border">
+                            <i class="fas fa-phone-alt text-success"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Phone</h4>
+                            <div class="d-flex flex-column align-items-center">
+                                <a href="tel:0762370000" target="_blank">076 237 0000</a>
+                                <a href="tel:0758912234" target="_blank">075 891 2234</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 p-2">
+                    <div class="contact-info-item bg_gray border">
+                        <div class="ico-box border">
+                            <i class="far fa-envelope text-danger"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Email</h4>
+                            <div class="d-flex flex-column align-items-center">
+                                <a href="mailto:info@byte.lk">info@byte.lk</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 p-2">
+                    <div class="contact-info-item bg_gray border">
+                        <div class="ico-box border">
+                            <i class="fab fa-facebook-f text-primary"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Facebook</h4>
+                            <div class="d-flex flex-column align-items-center">
+                                <a href="https://www.facebook.com/byte.lk" target="_blank">byte.lk</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 p-2">
+                    <div class="contact-info-item bg_gray border">
+                        <div class="ico-box border">
+                            <i class="fab fa-instagram text-danger"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Instagram</h4>
+                            <div class="d-flex flex-column align-items-center">
+                                <a href="https://www.instagram.com/bytes.lk/" target="_blank">bytes.lk</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 p-2">
+                    <div class="contact-info-item bg_gray border">
+                        <div class="ico-box border">
+                            <i class="fab fa-whatsapp text-success"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Whatsapp</h4>
+                            <div class="d-flex flex-column align-items-center">
+                                <a href="https://api.whatsapp.com/send?phone=94762370000&text=Hi" target="_blank">076 237 0000</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-md-10">
                     @if (Session::has('msg'))
