@@ -68,7 +68,7 @@ $(document).ready(() => {
     function handleEditClick(e) {
 
         // get main category data from db
-        axios.get('/api/get-category', { headers: { 'main': e.currentTarget.id } }).then((res) => {
+        axios.get('demo/api/get-category', { headers: { 'main': e.currentTarget.id } }).then((res) => {
 
             mainCatEditBox.attr('value', res.data.main.name);
             mainCatDataId.attr('value', res.data.main.catid);

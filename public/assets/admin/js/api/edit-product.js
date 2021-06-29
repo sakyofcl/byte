@@ -3,7 +3,7 @@ $(document).ready(()=>{
     
     let editElement=$('.product-edit-btn');
     
-    let url="/api/edit/product?pid=";
+    let url="demo/api/edit/product?pid=";
      
     function editHandleClick(e){
         let updateFormRootWrapper=$("#updateFormRootWrapper");

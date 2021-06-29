@@ -29,7 +29,7 @@ $(document).ready(() => {
     }
 
     //apiurl
-    const apiurl = '/api/search';
+    const apiurl = 'demo/api/search';
 
     //hide btn default
     searchBtn.attr('disabled', true);
