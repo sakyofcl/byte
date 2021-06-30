@@ -33,16 +33,16 @@
                         </li>
                         <li class="breadcrumb-item">
                             @foreach ($productsinfo['subcat'] as $items)
-                                <?php 
-                                    $subName=strtolower( preg_replace('/\s+/','-', $items->name) );
-                                ?>
-                               
-                                @foreach ($productsinfo['catname'] as $main)
-                                    <a class="text-primary" href="/product/{{$main->name}}/{{$items->name}}/{{ $items->subid }}">
-                                        {{ $items->name }}
-                                    </a>
-                                @endforeach
-                                
+                            <?php
+                            $subName = strtolower(preg_replace('/\s+/', '-', $items->name));
+                            ?>
+
+                            @foreach ($productsinfo['catname'] as $main)
+                            <a class="text-primary" href="/product/{{$main->name}}/{{$items->name}}/{{ $items->subid }}">
+                                {{ $items->name }}
+                            </a>
+                            @endforeach
+
                             @endforeach
                         </li>
                         <li class="breadcrumb-item active">
@@ -98,7 +98,7 @@
                         <div class="product_price">
                             <span class="price">Rs.{{ number_format($items->price) }}</span>
                         </div>
-                        
+
                         <div class="pr_desc mt-1 w-100">
                             <p style="font-size:13px">
                                 {{ $items->description }}
@@ -121,53 +121,67 @@
                                     <td><span style="padding-right:10px;">Model</span></td>
                                     <td><span>{{ $items->model }}</span></td>
                                 </tr>
-                                
+
                                 <tr>
                                     <td><span style="padding-right:10px;">Available</span></td>
                                     @if( $items->stock=="1")
-                                        <td>
-                                            <i class="fas fa-shopping-bag text-success"></i>
-                                            <span>In stock</span>
-                                        </td>
+                                    <td>
+                                        <i class="fas fa-shopping-bag text-success"></i>
+                                        <span>In stock</span>
+                                    </td>
                                     @else
-                                        <td>
-                                            <i class="far fa-sad-tear text-warning pr-1"></i>
-                                            <span>No stock</span>
-                                        </td>
+                                    <td>
+                                        <i class="far fa-sad-tear text-warning pr-1"></i>
+                                        <span>No stock</span>
+                                    </td>
                                     @endif
                                 </tr>
-                                
+
                             </table>
                         </div>
                         <hr />
                         <div class="product_sort_info">
                             <ul>
-                               
+
                                 <li><i class="linearicons-bag-dollar text-danger"></i> Cash on Delivery available</li>
                             </ul>
                         </div>
                     </div>
                     <hr />
                     <div class="cart_extra">
-                        
+
                         <div class="cart-product-quantity">
                             <div class="quantity">
-                                <input type="button" value="-" class="minus">
-                                <input type="text" name="quantity" value="1" title="Qty" class="qty" size="4" id="qty">
-                                <input type="button" value="+" class="plus">
+                                <form action="/updateqty" method="post">
+                                    @csrf
+                                    @if(Session::has('cart'))
+                                    @foreach (Session::get('cart') as $cart)
+                                    @if($cart['id']==$items->pid)
+                                    <input type="text" value={{$cart['id']}} name="pid" hidden>
+                                    <input type="number" name="quantity" value={{ $cart["qty"] }} class="qty" id="qty" style="margin:4px;" required>
+                                    <button type="submit" class="plus rounded-0 border" id="#" style="height:36px;">
+                                        <i class="fas fa-recycle"></i>
+                                    </button>
+                                    @break
+                                    @endif
+
+                                    @endforeach
+                                    @endif
+                                </form>
                             </div>
                         </div>
-                        
+
                         <div class="cart_btn">
-                            <a href="/checkout/{{ $items->pid }}" id="buy-product">
-                                <button class="btn btn-fill-out-green btn-addtocart" type="button" style="width:150px;">
-                                    <i class="fas fa-shopping-bag"></i> Buy
-                                </button>
-                            </a>
-                            <a href="/addcart/{{ $items->pid }}">
+
+                            <a href="/addcart/{{ $items->pid }}" style="margin-right: 10px;">
                                 <button class="btn btn-fill-out btn-addtocart " type="button" style="width:150px;">
                                     <i class="icon-basket-loaded"></i>
                                     Cart
+                                </button>
+                            </a>
+                            <a href="/checkout/{{ $items->pid }}" id="buy-product">
+                                <button class="btn btn-fill-out-green btn-addtocart" type="button" style="width:150px;">
+                                    <i class="fas fa-shopping-bag"></i> Buy
                                 </button>
                             </a>
                         </div>
@@ -207,40 +221,40 @@
                     </ul>
                     <div class="tab-content shop_info_tab">
                         <div class="tab-pane fade show active" id="Description" role="tabpanel" aria-labelledby="Description-tab">
-                            
+
                             <?php
                             foreach ($productsinfo['data'] as $value) {
                                 echo "
                                 <div class='p-2 w-100'>
-                                    ".$value->editerdesc."
+                                    " . $value->editerdesc . "
                                 </div>";
                             }
-                            ?> 
+                            ?>
                         </div>
                         <div class="tab-pane fade" id="Additional-info" role="tabpanel" aria-labelledby="Additional-info-tab">
                             <table class="table table-bordered">
                                 @foreach ($productsinfo['data'] as $items)
-                                    <tr>
-                                        <td>Brand</td>
-                                        <td>{{ $items->brand }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Model</td>
-                                        <td>{{ $items->model }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Weight</td>
-                                        <td>{{ $items->weight }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Height</td>
-                                        <td>{{ $items->height }}</td>
-                                    </tr>
+                                <tr>
+                                    <td>Brand</td>
+                                    <td>{{ $items->brand }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Model</td>
+                                    <td>{{ $items->model }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Weight</td>
+                                    <td>{{ $items->weight }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Height</td>
+                                    <td>{{ $items->height }}</td>
+                                </tr>
                                 @endforeach
                             </table>
                         </div>
                         <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
-                            
+
                             <div class="review_form field_form">
                                 <h5>Add a review</h5>
                                 <form class="row mt-3">
@@ -281,7 +295,7 @@
             </div>
         </div>
 
-       
+
     </div>
     </div>
     <!-- END SECTION SHOP -->

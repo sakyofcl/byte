@@ -182,7 +182,7 @@
 
                 <div class="col-lg-4">
 
-                    <p class="mb-lg-0 text-center text-white">© 2021 All Rights Reserved by byte.lk | <span style="letter-spacing:2px;">v1.0.8</span><br>
+                    <p class="mb-lg-0 text-center text-white">© 2021 All Rights Reserved by byte.lk | <span style="letter-spacing:2px;">v1.0.9</span><br>
                         <a class="text-white" href="http://royaltech.lk" target="_blank">
                             <span>Developed By Royaltech </span>
                             <span>
