@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,17 +19,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/product-category',[ProductController::class,'listCategory']);
-Route::get('/show-products',[ProductController::class,'showProductsData']);
+Route::get('/product-category', [ProductController::class, 'listCategory']);
+Route::get('/show-products', [ProductController::class, 'showProductsData']);
 
 // edit category api route admin
-Route::get('/get-category',[CategoryController::class,'editCategory']);
+Route::get('/get-category', [CategoryController::class, 'editCategory']);
 
 //add product page get subcategory
-Route::get('/get-sub-category',[CategoryController::class,'getSubCategory']);
+Route::get('/get-sub-category', [CategoryController::class, 'getSubCategory']);
 
 //search product search
-Route::get('/search',[ProductController::class,'search']);
+Route::get('/search', [ProductController::class, 'search']);
 
 //update product
 Route::get('/edit/product/', [ProductController::class, 'editProduct']);
+
+Route::get('/mail/invoice', [OrderController::class, 'sendInvoice']);

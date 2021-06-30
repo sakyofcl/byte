@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
 use App\Model\Order;
 use App\Model\Ship_address;
 use App\Model\Orders_products;
@@ -61,7 +61,7 @@ class OrderController extends Controller
     }
     public function store(Request $data)
     {
-        
+
         $store = new Order;
         $address = new Ship_address;
         $products = new Orders_products;
@@ -134,10 +134,22 @@ class OrderController extends Controller
                 }
                 if ($store->save() && $address->save() && $payment->save()) {
                     order_key::where('name', 'BO_')->update(['key' => $unique_oid]);
-                    $user = Order::where('oid', $unique_oid)->get();
-                    $shipAddress = Ship_address::where('oid', $unique_oid)->get();
+                    $user = Order::where('oid', $unique_oid)->get()->first();
+                    $shipAddress = Ship_address::where('oid', $unique_oid)->get()->first();
+
+                    //send email to admin and user
+                    if ($user) {
+                        Mail::send('component/invoiceMailView', ['user' => $user, 'ship' => $shipAddress, 'product' => session()->get('cart')], function ($message) use ($user) {
+                            $message->from('wmail@byte.lk');
+                            $message->to('info@byte.lk')->subject('New Order ' . '[ ' . $user->oid . ' ]');
+                        });
+                        Mail::send('component/invoiceMailView', ['user' => $user, 'ship' => $shipAddress, 'product' => session()->get('cart')], function ($message) use ($user) {
+                            $message->from('wmail@byte.lk');
+                            $message->to($user->email)->subject('byte.lk | Thanks For Your Order! ' . '[ ' . $user->oid . ' ]');
+                        });
+                    }
+
                     return view('complete')->with('invoice', ['user' => $user, 'ship' => $shipAddress]);
-                    
                 } else {
                     return "somthing else";
                 }
