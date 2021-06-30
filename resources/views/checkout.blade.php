@@ -106,42 +106,39 @@
                                 </div>
                                 <div class="payment_option d-flex flex-column pl-4">
                                     @foreach ($product['paymentmethods'] as $items)
-                                        <?php
-                                        $cash = 'cash';
-                                        $bank = 'bank';
-                                        $card = 'card';
-                                        ?>
-                                        @switch($items->name)
+                                    <?php
+                                    $cash = 'cash';
+                                    $bank = 'bank';
+                                    $card = 'card';
+                                    ?>
+                                    @switch($items->name)
 
-                                            @case($cash) 
-                                                <div>
-                                                    <input class="form-check-input" type="radio" name="payment"
-                                                        value={{ $items->payment_id }}>
-                                                    <label class="form-check-label" for="payment">
-                                                        Cash on delivery.
-                                                    </label>
-                                                </div>
-                                            @break
+                                    @case($cash)
+                                    <div>
+                                        <input class="form-check-input" type="radio" name="payment" option="cash" value={{ $items->payment_id }}>
+                                        <label class="form-check-label" for="payment" id="cash">
+                                            Cash on delivery.
+                                        </label>
+                                    </div>
+                                    @break
 
-                                            @case($bank)
-                                                <div>
-                                                    <input class="form-check-input" type="radio" name="payment"
-                                                        value={{ $items->payment_id }}>
-                                                    <label class="form-check-label" for="payment">
-                                                        Direct Bank Transfer
-                                                    </label>
-                                                </div>
-                                            @break
-                                            @case($card)
-                                                <div>
-                                                    <input class="form-check-input" type="radio" name="payment"
-                                                        value={{ $items->payment_id }} disabled>
-                                                    <label class="form-check-label" for="payment">
-                                                        Credit / Debit Card( only for registered users )
-                                                    </label>
-                                                </div>
-                                            @break
-                                        @endswitch
+                                    @case($bank)
+                                    <div>
+                                        <input class="form-check-input" type="radio" name="payment" option="bank" value={{ $items->payment_id }}>
+                                        <label class="form-check-label" for="payment" id="bank">
+                                            Direct Bank Transfer
+                                        </label>
+                                    </div>
+                                    @break
+                                    @case($card)
+                                    <div>
+                                        <input class="form-check-input" type="radio" name="payment" option="card" value={{ $items->payment_id }} disabled>
+                                        <label class="form-check-label" for="payment" id="card">
+                                            Credit / Debit Card( only for registered users )
+                                        </label>
+                                    </div>
+                                    @break
+                                    @endswitch
                                     @endforeach
                                 </div>
                             </div>
@@ -195,15 +192,15 @@
                                     </thead>
                                     <tbody>
                                         @foreach (Session::get('cart') as $items)
-                                            <tr>
-                                                <td>
-                                                    <a href="/productinfo/{{strtolower( preg_replace('/\s+/','-', $items['name']) ) }}/{{ $items['id'] }}">
-                                                        {{ $items['name'] }}
-                                                    </a>
-                                                    <span class="product-qty">x {{ $items['qty'] }}</span>
-                                                </td>
-                                                <td>Rs.{{ number_format($items['price'] * $items['qty']) }}</td>
-                                            </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="/productinfo/{{strtolower( preg_replace('/\s+/','-', $items['name']) ) }}/{{ $items['id'] }}">
+                                                    {{ $items['name'] }}
+                                                </a>
+                                                <span class="product-qty">x {{ $items['qty'] }}</span>
+                                            </td>
+                                            <td>Rs.{{ number_format($items['price'] * $items['qty']) }}</td>
+                                        </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
@@ -212,8 +209,8 @@
                                             <th>Total</th>
                                             <?php $total = 0; ?>
                                             @foreach (Session::get('cart') as $items)
-                                                <?php $total = $total + $items['price'] * $items['qty'];
-                                                ?>
+                                            <?php $total = $total + $items['price'] * $items['qty'];
+                                            ?>
                                             @endforeach
                                             <td class="product-subtotal">Rs.{{ number_format($total) }}</td>
 
@@ -242,10 +239,8 @@
                     <div class="col-md-6">
                         <div class="newsletter_form">
                             <form>
-                                <input type="text" required="" class="form-control rounded-0"
-                                    placeholder="Enter Email Address">
-                                <button type="submit" class="btn btn-dark rounded-0" name="submit"
-                                    value="Submit">Subscribe</button>
+                                <input type="text" required="" class="form-control rounded-0" placeholder="Enter Email Address">
+                                <button type="submit" class="btn btn-dark rounded-0" name="submit" value="Submit">Subscribe</button>
                             </form>
                         </div>
                     </div>

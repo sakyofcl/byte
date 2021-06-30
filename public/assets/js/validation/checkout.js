@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
     const valid = ['name', 'email', 'number', 'address', 'town', 'province', 'zipcode', 'slip'];
-    setEventToElement(valid);
+    setEventToElement('change',valid,handleChange);
 
     var payment = document.getElementsByName('payment');
     for (let i = 0; i < payment.length; i++) {
@@ -10,6 +10,48 @@ $(document).ready(() => {
 
     $("#placeorder").prop("disabled", true);
 
+
+    // applay radio checked event while touch the radio btn text
+    const label=['cash','bank','card'];
+    
+    setEventToElement('click',label,handleLabelChange);
+
+    function handleLabelChange(e){
+        const ele=document.getElementsByName('payment');
+        for (let index = 0; index < ele.length; index++) {
+            if(ele[index].getAttribute('option')==e.target.id){
+                if(!ele[index].disabled){
+                    ele[index].checked = true;
+                    state.payment=false;
+                    
+
+                    if (state['name'] || state['address'] || state['town'] || state['zipcode'] || state['province'] || state['number'] || state['email'] || state['payment'] || state['slip']) {
+                        $("#placeorder").prop("disabled", true);
+                    } else {
+                        $("#placeorder").prop("disabled", false);
+                
+                        let shipname = document.getElementById('shipname');
+                        let shipaddrs = document.getElementById('shipaddrs');
+                        let shipcity = document.getElementById('shipcity');
+                        let shipzipcode = document.getElementById('shipzipcode');
+                        let shipnumber = document.getElementById('shipnumber');
+                        shipname.innerText = $('#name').val() + ',';
+                        shipaddrs.innerText = $('#address').val() + ',';
+                        shipcity.innerText = $('#town').val() + ` | ${$('#province').val()}` + ',';
+                        shipzipcode.innerText = 'Postal code: ' + $('#zipcode').val() + ',';
+                        shipnumber.innerText = $('#number').val() + '.'
+                
+                    }
+                    
+                    break;
+                    
+                }
+                
+            }
+        }
+       
+    }
+    
 })
 
 var state = {
@@ -151,11 +193,20 @@ function handleChange(e) {
 }
 
 
-function setEventToElement(element) {
-    $.map(element, (v) => {
-        const id = `#${v}`;
-        $(id).change(handleChange);
-    })
+function setEventToElement(name,element,eve) {
+    if(name=="change"){
+        $.map(element, (v) => {
+            const id = `#${v}`;
+            $(id).change(eve);
+        })
+    }
+    else if(name=="click"){
+        $.map(element, (v) => {
+            const id = `#${v}`;
+            $(id).click(eve);
+        })
+    }
+    
 }
 
 function condtion(e, s) {

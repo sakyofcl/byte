@@ -26,7 +26,7 @@
 
                                 <i class="ti-location-pin text-danger"></i>
 
-                                <p >
+                                <p>
 
                                     105/33,Unity Square Sports Complex,
 
@@ -46,7 +46,7 @@
 
                                 <i class="ti-email text-primary"></i>
 
-                                <p >info@byte.lk</p>
+                                <p>info@byte.lk</p>
 
                             </li>
 
@@ -54,7 +54,7 @@
 
                                 <i class="ti-mobile text-success"></i>
 
-                                <p >077 1377709</p>
+                                <p>077 1377709</p>
 
                             </li>
 
@@ -120,49 +120,45 @@
 
                         <ul class="widget_instafeed instafeed_col4">
 
-                           
 
-                                
+
+
 
                             @if(Session::get('newproduct')!==null)
 
-                                <?php $items=Session::get('newproduct');?>
+                            <?php $items = Session::get('newproduct'); ?>
 
-                                @for($i=0; $i < count($items); $i++)
+                            @for($i=0; $i < count($items); $i++) @if($i<=8) <li>
 
-                                    @if($i<=8)
 
-                                        <li>
 
-                                            
+                                <a href="/productinfo/{{strtolower( preg_replace('/\s+/','-', $items[$i]->name) ) }}/{{ $items[$i]->pid }}">
 
-                                            <a href="/productinfo/{{strtolower( preg_replace('/\s+/','-', $items[$i]->name) ) }}/{{ $items[$i]->pid }}">
+                                    <?php $newProductImage = 'products/' . $items[$i]->image; ?>
 
-                                                <?php $newProductImage='products/'.$items[$i]->image;?>
+                                    <img src={{ asset($newProductImage) }} alt="product_img1">
 
-                                                <img src={{ asset($newProductImage) }} alt="product_img1">
+                                    <span class="insta_icon">
 
-                                                <span class="insta_icon">
+                                        <i class="icon-basket-loaded"></i>
 
-                                                    <i class="icon-basket-loaded"></i>
+                                    </span>
 
-                                                </span>
+                                </a>
 
-                                            </a>
+                                </li>
 
-                                        </li>
+                                @else
 
-                                    @else
+                                @break
 
-                                        @break
-
-                                    @endif
+                                @endif
 
                                 @endfor
 
-                            @endif 
+                                @endif
 
-                             
+
 
                         </ul>
 
@@ -176,7 +172,7 @@
 
     </div>
 
-    
+
 
     <div class="bottom_footer border-top-tran">
 
@@ -186,7 +182,7 @@
 
                 <div class="col-lg-4">
 
-                    <p class="mb-lg-0 text-center text-white">© 2021 All Rights Reserved by byte.lk<br>
+                    <p class="mb-lg-0 text-center text-white">© 2021 All Rights Reserved by byte.lk | <span style="letter-spacing:2px;">v1.0.8</span><br>
                         <a class="text-white" href="http://royaltech.lk" target="_blank">
                             <span>Developed By Royaltech </span>
                             <span>
@@ -196,7 +192,7 @@
                                 <a href="#">
                                     <i class="fab fa-instagram text-danger"></i>
                                 </a>
-                                
+
                             </span>
                         </a>
                     </p>
@@ -272,4 +268,3 @@
 <!-- END FOOTER -->
 
 <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
-
