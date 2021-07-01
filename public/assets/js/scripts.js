@@ -1,12 +1,3 @@
-/*===================================
-Author       : Bestwebcreator.
-Template Name: Shopwise - eCommerce Bootstrap 4 HTML Template
-Version      : 1.0
-===================================*/
-
-/*===================================*
-PAGE JS
-*===================================*/
 
 (function($) {
     'use strict';
@@ -832,5 +823,6 @@ PAGE JS
     //	});
     //});
 
-
+    var pr_item_gallery=document.getElementById('pr_item_gallery');
+    pr_item_gallery.style.color="#fff";
 })(jQuery);

@@ -2,19 +2,17 @@ import { setEventToElement as setEventsToClass } from '../../../js/api/dom/eleme
 
 $(document).ready(() => {
 
-    const keyUpEle = ['name', 'price', 'pcode', 'description', 'model', 'brand'];
+    const keyUpEle = ['name', 'model', 'brand'];
     const changeEle = ['image', 'catid'];
     setEventToElement(keyUpEle, 'keyup', handleKeyup);
     setEventToElement(changeEle, 'change', handleChange);
     setEventsToClass('.stock', handleChange, 'change');
     $("#addbtn").prop("disabled", true);
+    state.stock=false;
 
 })
 var state = {
     'name': true,
-    'price': true,
-    'pcode': true,
-    'description': true,
     'catid': true,
     'image': true,
     'brand': true,
@@ -42,16 +40,17 @@ function handleChange(c) {
     if (c.target.name == "catid") {
         condtion(c, state);
     }
-    if (state['description'] || state['catid'] || state['image'] || state['name'] || state['pcode'] || state['price'] || state['stock'] || state['brand'] || state['model']) {
+    if ( state['catid'] || state['image'] || state['name']  || state['brand'] || state['model']) {
         $("#addbtn").prop("disabled", true);
     } else {
         $("#addbtn").prop("disabled", false);
     }
+    
 }
 
 function handleKeyup(e) {
 
-    CheckTextOrNot(['model', 'price', 'pcode', 'name', 'description', 'brand'], e);
+    CheckTextOrNot(['model','name','brand'], e);
 
     if (e.target.name == 'catid') {
         if (e.target.value) {
@@ -66,13 +65,12 @@ function handleKeyup(e) {
     }
 
 
-    if (state['description'] || state['catid'] || state['image'] || state['name'] || state['pcode'] || state['price'] || state['stock'] || state['brand'] || state['model']) {
+    if (state['catid'] || state['image'] || state['name']  || state['brand'] || state['model']) {
         $("#addbtn").prop("disabled", true);
 
     } else {
         $("#addbtn").prop("disabled", false);
     }
-
 }
 
 

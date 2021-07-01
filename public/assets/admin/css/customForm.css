@@ -33,16 +33,19 @@
     color: #576366;
     font-size: 14px;
 }
-
+.card-form .form-body label {
+    font-weight: bold;
+    color: #000;
+}
 .card-form .form-footer {
     margin: 0 25px 15px 25px;
     padding: 15px 10px;
 }
 
-.error{
-    border:1px solid red!important;
-    transition:0.5s;
+.error {
+    border: 1px solid red !important;
+    transition: 0.5s;
 }
-.noerror{
-    border:1px solid rgb(101, 168, 0) !important;
+.noerror {
+    border: 1px solid rgb(101, 168, 0) !important;
 }
