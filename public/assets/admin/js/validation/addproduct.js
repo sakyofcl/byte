@@ -3,17 +3,17 @@ import { setEventToElement as setEventsToClass } from '../../../js/api/dom/eleme
 $(document).ready(() => {
 
     const keyUpEle = ['name', 'model', 'brand'];
-    const changeEle = ['image', 'catid'];
+    const changeEle = ['image'];
     setEventToElement(keyUpEle, 'keyup', handleKeyup);
     setEventToElement(changeEle, 'change', handleChange);
     setEventsToClass('.stock', handleChange, 'change');
     $("#addbtn").prop("disabled", true);
+    $('#submitbtn').prop("disabled", true);
     state.stock=false;
 
 })
 var state = {
     'name': true,
-    'catid': true,
     'image': true,
     'brand': true,
     'model': true,
@@ -37,13 +37,13 @@ function handleChange(c) {
     if (c.target.name == "stock") {
         condtion(c, state);
     }
-    if (c.target.name == "catid") {
-        condtion(c, state);
-    }
-    if ( state['catid'] || state['image'] || state['name']  || state['brand'] || state['model']) {
+   
+    if ( state['image'] || state['name']  || state['model']) {
         $("#addbtn").prop("disabled", true);
+        $('#submitbtn').prop("disabled", true);
     } else {
         $("#addbtn").prop("disabled", false);
+        $('#submitbtn').prop("disabled", false);
     }
     
 }
@@ -52,24 +52,16 @@ function handleKeyup(e) {
 
     CheckTextOrNot(['model','name','brand'], e);
 
-    if (e.target.name == 'catid') {
-        if (e.target.value) {
-            state[e.target.name] = false;
-            $(`#${e.target.id}`).addClass('noerror');
-            $(`#${e.target.id}`).removeClass('error');
-        } else {
-            state[e.target.name] = true;
-            $(`#${e.target.id}`).addClass('error');
-            $(`#${e.target.id}`).removeClass('noerror');
-        }
-    }
+    
 
 
-    if (state['catid'] || state['image'] || state['name']  || state['brand'] || state['model']) {
+    if ( state['image'] || state['name']  || state['model']) {
         $("#addbtn").prop("disabled", true);
+        $('#submitbtn').prop("disabled", true);
 
     } else {
         $("#addbtn").prop("disabled", false);
+        $('#submitbtn').prop("disabled", false);
     }
 }
 

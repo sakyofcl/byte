@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\adminOrderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\brandController;
 use Illuminate\Http\Request;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -62,6 +63,12 @@ Route::post('/store-updates', [ProductController::class, 'storeUpdates']);
 Route::get('testing/{id}', [ProductController::class, 'find_subcat']);
 Route::get('/delete/product/', [ProductController::class, 'deleteproduct']);
 Route::get('/search/{q?}', [ProductController::class, 'searchList']);
+
+#Admin Edit
+Route::get('/edit/stock/{id}', [ProductController::class, 'editProductStock']);
+#Admin Add
+Route::post('/add-brand', [brandController::class, 'addBrand']);
+
 
 Route::get('/order', [adminOrderController::class, 'index']);
 

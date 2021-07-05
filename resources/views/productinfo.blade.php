@@ -109,7 +109,7 @@
                                 <table style="font-size:13px">
                                     <tr>
                                         <td><span style="padding-right:10px;">Product Code</span></td>
-                                        <td><span>{{ $items->pcode }}</span></td>
+                                        <td><span>BI_{{ $items->pid }}</span></td>
                                     </tr>
                                     <tr>
                                         <td><span style="padding-right:10px;">Brand</span></td>
@@ -129,9 +129,9 @@
                                             <i class="fas fa-shopping-bag text-success"></i>
                                             <span>In stock</span>
                                         </td>
-                                        @else
+                                        @elseif($items->stock=="0")
                                         <td>
-                                            <i class="far fa-sad-tear text-warning pr-1"></i>
+                                            <i class="fas fa-times-circle text-danger pr-1"></i>
                                             <span>No stock</span>
                                         </td>
                                         @endif

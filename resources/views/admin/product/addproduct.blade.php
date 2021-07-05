@@ -66,9 +66,19 @@
                                     <select class="form-control rawinput text-uppercase" name="catid" id="catid">
 
                                         @foreach ($category['main'] as $items)
-                                        <option value="{{$items->catid}}">{{$items->name}}</option>
+                                            @if(Session::has('lastAddCategory'))
+                                                @if(Session::get('lastAddCategory')==$items->catid)
+                                                    <option value="{{$items->catid}}" selected>{{$items->name}}</option>
+                                                @else
+                                                    <option value="{{$items->catid}}">{{$items->name}}</option>
+                                                @endif
+                                            @else
+                                                <option value="{{$items->catid}}">{{$items->name}}</option>   
+                                            @endif
                                         @endforeach
+
                                     </select>
+
                                 </div>
 
                                 <div class="col-md-4 form-row">
@@ -102,21 +112,31 @@
 
                                 </div>
 
-                                <div class="col-md-4 form-row">
+                                <div class="col-md-3 form-row">
                                     <label for="brand">Brand *</label>
-                                    <input type="text" name="brand" id="brand" class="form-control rawinput" placeholder="Brand">
+                                    <select class="form-control rawinput text-uppercase" name="brand" id="brand">
+                                        
+                                        @foreach ($category['brand'] as $items)
+                                            <option value="{{$items->brand}}">{{$items->brand}}</option>
+                                        @endforeach
+                                        <option value="addnew" class="text-capitalize text-danger">add new</option>
+                                    </select>
+                                    
                                 </div>
 
-                                <div class="col-md-4 form-row">
+                                <div class="col-md-3 form-row">
                                     <label for="model">Model *</label>
                                     <input type="text" name="model" id="model" class="form-control rawinput" placeholder="Model">
                                 </div>
 
-                                <div class="col-md-4 form-row">
+                                <div class="col-md-3 form-row">
                                     <label for="price">Product Price</label>
                                     <input type="number" name="price" id="price" class="form-control rawinput">
                                 </div>
-
+                                <div class="col-md-3 form-row">
+                                    <label for="price">Weight</label>
+                                    <input type="number" name="weight" id="weight" class="form-control rawinput">
+                                </div>
                                 <div class="col-12 form-row">
                                     <label for="description">Short Description</label>
                                     <textarea name="description" id="description" class="form-control rawinput h-100" rows="3"></textarea>
@@ -131,19 +151,6 @@
                                     <input type="file" name="images[]" id="images" class="form-control-file rawinput" accept="image/*" multiple>
                                 </div>
 
-                                <div class="col-12 form-row">
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb border bg-white">
-                                            <li class="breadcrumb-item active text-capitalize" aria-current="page">
-                                                <span class="badge badge-success p-2 border text-uppercase" style="letter-spacing:2px;">
-                                                    <i class="fas fa-plus"></i>
-                                                    add specifications
-                                                </span>
-                                            </li>
-                                        </ol>
-                                    </nav>
-                                </div>
-
                                 <div class="col-12 form-row w-100">
                                     <textarea name="editerdisc" id="editer-disc" class="form-control rawinput h-100 w-100" rows="3"></textarea>
                                 </div>
@@ -152,7 +159,11 @@
                             </div>
 
                             <div class="form-footer">
-                                <button type="submit" class="btn btn-danger mr-1 h-100" id="addbtn">
+                                <button type="submit" class="btn btn-success mr-1 h-100" id="submitbtn" name="submit" value="submit">
+                                    <i class="fas fa-plus mr-1"></i>
+                                    <span>Submit<span>
+                                </button>
+                                <button type="submit" class="btn btn-danger mr-1 h-100" id="addbtn" name="submit" value="addnew">
                                     <i class="fas fa-plus mr-1"></i>
                                     <span>Add New<span>
                                 </button>
@@ -166,10 +177,11 @@
 
     </div>
 
-
+    @include('./admin/popup-model/add-brand')
     @include('./admin/jslink/js')
     <script src="{{ asset('assets/admin/js/validation/addproduct.js')}}" type="module"></script>
     <script src="{{ asset('assets/admin/js/api/addproduct.js')}}" type="module"></script>
+    <script src="{{ asset('assets/admin/js/add-brand.js')}}" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.0/tinymce.min.js" integrity="sha512-k+t+yFpvcMDstTfYd5lj2624TCW6A9QkHBuFGNWpSlalxBCm/vVdTukWKGk+n+AnzbgoXLgg9x2ztZWk3TuGvQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('assets/admin/js/editer/init.js') }}"></script>
 
