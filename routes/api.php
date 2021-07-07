@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\adminOrderController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,3 +36,12 @@ Route::get('/search', [ProductController::class, 'search']);
 Route::get('/edit/product/', [ProductController::class, 'editProduct']);
 
 Route::get('/mail/invoice', [OrderController::class, 'sendInvoice']);
+
+//check order
+Route::get('/check/order', [OrderController::class, 'orderDetails']);
+
+//order status
+Route::get('/order/status', [adminOrderController::class, 'updateOrderStatus']);
+
+//order payment status
+Route::get('/order/payment/status', [adminOrderController::class, 'updateOrderPaymentStatus']);

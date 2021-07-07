@@ -11,6 +11,7 @@ use App\Model\category;
 use App\Model\sub_category;
 use App\Model\product;
 use App\Model\product_more_images;
+use App\Model\product_brand;
 
 class ProductController extends Controller
 {
@@ -19,6 +20,7 @@ class ProductController extends Controller
         $subcat = sub_category::all();
         $maincat = category::all();
         $product = product::paginate(9);
+
         return view('product')->with('category', ['product' => $product, 'mainCategory' => $maincat, 'subCategory' => $subcat, 'type' => 'P-D']);
     }
 
@@ -68,7 +70,8 @@ class ProductController extends Controller
     {
         if (session()->has('admin')) {
             $maincat = category::all();
-            return view('./admin/product/addproduct')->with('category', ['main' => $maincat]);
+            $brand = product_brand::all();
+            return view('./admin/product/addproduct')->with('category', ['main' => $maincat, 'brand' => $brand]);
         } else {
             return redirect('/');
         }
@@ -76,11 +79,6 @@ class ProductController extends Controller
 
     public function storeproduct(Request $data)
     {
-
-        #getting last pid of product table
-        $lastPid = product::orderBy('pid', 'DESC')->get('pid')->first();
-        $newPid = $lastPid->pid + 1;
-
         $store = new product;
 
         $store->catid = $data->catid;
@@ -121,6 +119,12 @@ class ProductController extends Controller
             $store->subid = 0;
         }
 
+        if (!$data->weight == null) {
+            $store->weight = $data->weight;
+        } else {
+            $store->weight = 0;
+        }
+
         # store main image
         $image = $data->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -128,23 +132,32 @@ class ProductController extends Controller
         $image->move($storepath,  $imageName);
         $store->image = $imageName;
 
-        # store other image
-        $otherImagePath = public_path('./products/other');
-        if ($files = $data->file('images')) {
-            for ($i = 0; $i < count($files); $i++) {
-                $name = $i . time() . '.' . $files[$i]->getClientOriginalExtension();
-                $files[$i]->move($otherImagePath, $name);
-                product_more_images::create([
-                    'img_name' => $name, 'pid' => $newPid
-                ]);
-            }
-        }
+
 
 
 
         if ($store->save()) {
-            Session::flash('productSave', 'ok');
-            return back();
+            #getting last pid of product table
+            $lastPid = product::orderBy('pid', 'DESC')->get('pid')->first();
+            $newPid = $lastPid->pid;
+            # store other image
+            $otherImagePath = public_path('./products/other');
+            if ($files = $data->file('images')) {
+                for ($i = 0; $i < count($files); $i++) {
+                    $name = $i . time() . '.' . $files[$i]->getClientOriginalExtension();
+                    $files[$i]->move($otherImagePath, $name);
+                    product_more_images::create([
+                        'img_name' => $name, 'pid' => $newPid
+                    ]);
+                }
+            }
+            if ($data->submit == "submit") {
+                return redirect('/manageproduct');
+            } else {
+                Session::flash('productSave', 'ok');
+                Session::flash('lastAddCategory', $data->catid);
+                return back();
+            }
         } else {
             Session::flash('productSave', 'no');
             return back();
@@ -195,13 +208,18 @@ class ProductController extends Controller
         } else {
             $price = 0;
         }
-
+        if ($data->weight) {
+            $weight = $data->weight;
+        } else {
+            $weight = 0;
+        }
 
         $update = product::where('pid', $data->pid)->update(array(
             'name' => $name,
             'description' => $description,
             'price' => $price,
-            'editerdesc' => $editerdisc
+            'editerdesc' => $editerdisc,
+            'weight' => $weight
         ));
 
         if ($update) {
@@ -218,10 +236,15 @@ class ProductController extends Controller
     /*delete product*/
     public function deleteproduct(Request $data)
     {
-        $del = product::findOrFail($data->pid);
-        $getimg = product::find($data->pid, ['image']);
+        $del = product::where('pid', $data->pid)->first();
+        $collection = product_more_images::where('pid', $data->pid)->get();
+
+        for ($i = 0; $i < count($collection); $i++) {
+            $collection[$i]->delete();
+            File::delete(public_path("products/other/{$collection[$i]->img_name}"));
+        }
         $del->delete();
-        File::delete(public_path("products/{$getimg['image']}"));
+        File::delete(public_path("products/{$del->image}"));
         return back();
     }
 
@@ -380,5 +403,22 @@ class ProductController extends Controller
         $subCat = sub_category::where('catid', $product[0]->catid)->get();
 
         return response()->json(['product' => $product, 'main' => $mainCatName, 'sub' => $subCat, 'status' => 'ok']);
+    }
+    public function editProductStock($id, Request $data)
+    {
+
+        if (isset($data->v) && isset($id)) {
+            if ($data->v == "0" || $data->v == "1") {
+
+                $update = product::where('pid', $id)->update(array(
+                    'stock' => $data->v,
+                ));
+
+                if ($update) {
+                    return back();
+                }
+            }
+        }
+        return back();
     }
 }

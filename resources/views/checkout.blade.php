@@ -111,11 +111,11 @@
                                     $bank = 'bank';
                                     $card = 'card';
                                     ?>
-                                    @switch($items->name)
+                                    @switch($items->method)
 
                                     @case($cash)
                                     <div>
-                                        <input class="form-check-input" type="radio" name="payment" option="cash" value={{ $items->payment_id }}>
+                                        <input class="form-check-input" type="radio" name="payment" option="cash" value={{ $cash }}>
                                         <label class="form-check-label" for="payment" id="cash">
                                             Cash on delivery.
                                         </label>
@@ -124,7 +124,7 @@
 
                                     @case($bank)
                                     <div>
-                                        <input class="form-check-input" type="radio" name="payment" option="bank" value={{ $items->payment_id }}>
+                                        <input class="form-check-input" type="radio" name="payment" option="bank" value={{ $bank }}>
                                         <label class="form-check-label" for="payment" id="bank">
                                             Direct Bank Transfer
                                         </label>
@@ -132,7 +132,7 @@
                                     @break
                                     @case($card)
                                     <div>
-                                        <input class="form-check-input" type="radio" name="payment" option="card" value={{ $items->payment_id }} disabled>
+                                        <input class="form-check-input" type="radio" name="payment" option="card" value={{ $card }} disabled>
                                         <label class="form-check-label" for="payment" id="card">
                                             Credit / Debit Card( only for registered users )
                                         </label>

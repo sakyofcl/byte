@@ -47,9 +47,13 @@
                                 </div>
 
         
-                                <div class="col-md-12 form-row" style='padding-right:25px;'>
+                                <div class="col-md-6 form-row">
                                     <label for="price" class="text-danger">Product Price*</label>
                                     <input type="number" name="price" id="price" class="form-control rawinput">
+                                </div>
+                                <div class="col-md-6 form-row">
+                                  <label for="weight" class="text-danger">Product Weight*</label>
+                                  <input type="number" name="weight" id="weight" class="form-control rawinput">
                                 </div>
 
                                 <div class="col-12 form-row">

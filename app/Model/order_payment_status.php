@@ -4,16 +4,13 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ship_address extends Model
+class order_payment_status extends Model
 {
     protected $fillable = [
         'id',
         'oid',
-        'street',
-        'city',
-        'zip',
-        'province',
+        'status'
     ];
-    public $primaryKey = "oid";
+    public $primaryKey = "id";
     public $timestamps = false;
 }

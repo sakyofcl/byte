@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\adminOrderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\brandController;
 use Illuminate\Http\Request;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -37,13 +38,14 @@ Route::get('/invoice', function () {
 
 
 
-/* admin route */
+/* -------------------- [ ADMIN ROUTES ] --------------------- */
 /* show login page */
 Route::get('admin', [AdminController::class, 'index']);
 Route::post('admin', [AdminController::class, 'login']);
 Route::get('admin-dashbord', [AdminController::class, 'adminDashbord']);
 Route::get('/adminout', [AdminController::class, 'adminOut']);
 
+/*-----[ PRODUCT ]------*/
 Route::get('category', [CategoryController::class, 'index']);
 Route::post('add-main-category', [CategoryController::class, 'add']);
 Route::post('add-sub-category', [CategoryController::class, 'addSub']);
@@ -63,7 +65,16 @@ Route::get('testing/{id}', [ProductController::class, 'find_subcat']);
 Route::get('/delete/product/', [ProductController::class, 'deleteproduct']);
 Route::get('/search/{q?}', [ProductController::class, 'searchList']);
 
+#Admin Edit
+Route::get('/edit/stock/{id}', [ProductController::class, 'editProductStock']);
+#Admin Add
+Route::post('/add-brand', [brandController::class, 'addBrand']);
+
+/*-----[ ORDER ]------*/
 Route::get('/order', [adminOrderController::class, 'index']);
+Route::get('/order/accept', [adminOrderController::class, 'updateOrderStage']);
+Route::get('/order/cancel', [adminOrderController::class, 'updateOrderStage']);
+Route::get('/order/complete', [adminOrderController::class, 'updateOrderStage']);
 
 
 /* claint route */

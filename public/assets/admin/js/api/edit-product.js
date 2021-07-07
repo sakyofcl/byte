@@ -19,7 +19,7 @@ $(document).ready(()=>{
             })
             
             
-            setDefaultValueToForm(res.data.product[0],['name','brand','model','price','description','pid'],'text');
+            setDefaultValueToForm(res.data.product[0],['name','brand','model','price','description','pid','weight'],'text');
             setDefaultValueToForm(res.data.product[0],['editer-disc'],'editer');
             setDefaultValueToForm(res.data.product[0],['subid'],'select');
             updateFormRootWrapper.css('display','none')

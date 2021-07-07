@@ -82,7 +82,7 @@
 
                         </div>
 
-                        <div class="row" >
+                        <div class="row">
                             <div class="col-sm-12">
                                 <table id="example" class="table table-hover dataTable no-footer dtr-inline" cellspacing="0">
                                     <thead>
@@ -91,18 +91,17 @@
                                                 CODE
                                             </th>
                                             <th>
-                                                NAME
+                                                PRODUCT NAME
                                             </th>
                                             <th>
-                                                PRICE
+                                                PRICE (Rs)
                                             </th>
-                                            <th>
+                                            <th class="text-center">
+                                                BRAND
+                                            </th>
+                                            <th class="text-center">
                                                 STOCK
                                             </th>
-                                            <th>
-                                                CATEGORY
-                                            </th>
-                                            
                                             <th>
                                                 ACTIONS
                                             </th>
@@ -111,42 +110,30 @@
 
                                     <tbody id="containProductData">
                                         @foreach ($manageproduct['product'] as $items)
-                                            <tr role="row">
-                                                <td>BI_{{ $items->pid }}</td>
-                                                <td>{{ $items->name }}</td>
-                                                <td>{{ $items->price }}.Rs</td>
-                                                <td>{{ $items->stock }}</td>
-                                                <td>
-                                                    <span class="badge badge-primary text-uppercase rounded-0 p-1">
-                                                       @foreach ($manageproduct['maincat'] as $maincat)
-                                                            @if($items->catid==$maincat->catid)
-                                                                {{$maincat->name}}
-                                                            @endif
-                                                        @endforeach
-                                                    </span>
-                                                    <i class="fas fa-chevron-right"></i>
+                                        <tr role="row">
+                                            <td>BI_{{ $items->pid }}</td>
+                                            <td>{{ $items->name }}</td>
+                                            <td>{{number_format($items->price,2)}}</td>
+                                            <td class="text-center">{{$items->brand}}</td>
+                                            <td>
+                                                <div class="form-group form-check text-center">
+                                                    @if($items->stock=="1")
+                                                    <input type="checkbox" class="form-check-input bg-danger" id="edit-stock" onclick="location.href='/edit/stock/{{$items->pid}}?v=0'" checked>
+                                                    @elseif($items->stock=="0")
+                                                    <input type="checkbox" class="form-check-input" id="edit-stock" onclick="location.href='/edit/stock/{{$items->pid}}?v=1'">
+                                                    @endif
+                                                </div>
 
-                                                    <span class="badge badge-secondary rounded-0 text-uppercase p-1">
-                                                        @foreach ($manageproduct['subcat'] as $subcat)
-                                                            @if($items->subid==$subcat->subid)
-                                                                {{$subcat->name}}
-                                                            @endif
-                                                        @endforeach
-                                                    </span>
-
-                                                </td>
-                                                
-                                                <td class="d-flex w-100">
-                                                    <button class="btn btn-icon btn-pill btn-primary product-edit-btn" id="{{ $items->pid }}" data-toggle="modal" data-target="#product-edit-model">
-                                                        <i class="fa fa-fw fa-edit" id="{{ $items->pid }}"></i>
-                                                    </button>
-                                                    <a href="/delete/product?pid={{$items->pid}}"
-                                                        class="btn btn-icon btn-pill btn-danger ml-1" data-toggle="tooltip"
-                                                        title="Delete">
-                                                        <i class="fa fa-fw fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                            </td>
+                                            <td class="d-flex w-100">
+                                                <button class="btn btn-icon  btn-primary product-edit-btn" id="{{ $items->pid }}" data-toggle="modal" data-target="#product-edit-model">
+                                                    <i class="fa fa-fw fa-edit" id="{{ $items->pid }}"></i>
+                                                </button>
+                                                <a href="/delete/product?pid={{$items->pid}}" class="btn btn-icon btn-danger ml-2" data-toggle="tooltip" title="Delete">
+                                                    <i class="fa fa-fw fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
