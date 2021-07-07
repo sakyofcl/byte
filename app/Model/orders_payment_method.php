@@ -4,12 +4,12 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Orders_payment extends Model
+class orders_payment_method extends Model
 {
     protected $fillable = [
         'id',
         'oid',
-        'payment_id'
+        'method'
     ];
     public $primaryKey = "id";
     public $timestamps = false;

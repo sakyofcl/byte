@@ -38,13 +38,14 @@ Route::get('/invoice', function () {
 
 
 
-/* admin route */
+/* -------------------- [ ADMIN ROUTES ] --------------------- */
 /* show login page */
 Route::get('admin', [AdminController::class, 'index']);
 Route::post('admin', [AdminController::class, 'login']);
 Route::get('admin-dashbord', [AdminController::class, 'adminDashbord']);
 Route::get('/adminout', [AdminController::class, 'adminOut']);
 
+/*-----[ PRODUCT ]------*/
 Route::get('category', [CategoryController::class, 'index']);
 Route::post('add-main-category', [CategoryController::class, 'add']);
 Route::post('add-sub-category', [CategoryController::class, 'addSub']);
@@ -69,8 +70,11 @@ Route::get('/edit/stock/{id}', [ProductController::class, 'editProductStock']);
 #Admin Add
 Route::post('/add-brand', [brandController::class, 'addBrand']);
 
-
+/*-----[ ORDER ]------*/
 Route::get('/order', [adminOrderController::class, 'index']);
+Route::get('/order/accept', [adminOrderController::class, 'updateOrderStage']);
+Route::get('/order/cancel', [adminOrderController::class, 'updateOrderStage']);
+Route::get('/order/complete', [adminOrderController::class, 'updateOrderStage']);
 
 
 /* claint route */

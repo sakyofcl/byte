@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Model\Order;
-use App\Model\Ship_address;
+use App\Model\order_shipping_addresses;
 use App\Model\Orders_products;
 use App\Model\product;
 use App\Model\Payment_methods;
-use App\Model\Orders_payment;
+use App\Model\orders_payment_method;
 use App\Model\Orders_slip;
 use App\Model\order_key;
+use App\Model\order_stage;
+use App\Model\order_payment_status;
 
 class OrderController extends Controller
 {
@@ -63,10 +65,12 @@ class OrderController extends Controller
     {
 
         $store = new Order;
-        $address = new Ship_address;
+        $address = new order_shipping_addresses;
         $products = new Orders_products;
-        $payment = new Orders_payment;
+        $payment = new orders_payment_method;
         $slip = new Orders_slip;
+        $stage = new order_stage;
+        $paymentStatus = new order_payment_status;
 
         #it will fetch order key and increment then store
         $id = order_key::where('name', 'BO_')->get('key');
@@ -83,8 +87,8 @@ class OrderController extends Controller
         $store->email = $data->email;
         $store->phone = $data->number;
         $store->note = $data->ordernode;
-        $store->date = date("Y-m-d");
-        $store->status = 0;
+        $store->date = date('Y-m-d H:i:s');
+        $store->status = "prepare";
         # -------------- end -----------
 
         # store order ship address on ship_address table
@@ -95,20 +99,25 @@ class OrderController extends Controller
         $address->province = $data->province;
         # -------------- end -----------
 
-
-
         # store order payment methods
         $payment->oid = $unique_oid;
-        $payment->payment_id = $data->payment;
+        $payment->method = $data->payment;
         # -------------- end -----------
 
+        # store order stage
+        $stage->stage = "new";
+        $stage->oid = $unique_oid;
+        # -------------- end -----------
+        # store order payment status
+        $paymentStatus->status = "0";
+        $paymentStatus->oid = $unique_oid;
         # store order slip image
 
         if (Order::where('oid', $unique_oid)->exists()) {
-            return back();
+            return "dubliacte";
         } else {
 
-            if ($data->payment == 2) {
+            if ($data->payment == "bank") {
                 if ($data->file('slip')) {
                     $image = $data->file('slip');
                     $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -132,10 +141,10 @@ class OrderController extends Controller
                     ];
                     DB::table('orders_products')->insert($productdata);
                 }
-                if ($store->save() && $address->save() && $payment->save()) {
+                if ($store->save() && $address->save() && $payment->save() && $stage->save() && $paymentStatus->save()) {
                     order_key::where('name', 'BO_')->update(['key' => $unique_oid]);
                     $user = Order::where('oid', $unique_oid)->get()->first();
-                    $shipAddress = Ship_address::where('oid', $unique_oid)->get()->first();
+                    $shipAddress = order_shipping_addresses::where('oid', $unique_oid)->get()->first();
 
                     //send email to admin and user
                     if ($user) {
@@ -160,5 +169,30 @@ class OrderController extends Controller
     private function unique_oid()
     {
         return uniqid();
+    }
+
+    public function orderDetails(Request $data)
+    {
+
+        $address = order_shipping_addresses::where('oid', $data->oid)->first();
+        $order = Order::where('oid', $data->oid)->first();
+        $product = Orders_products::where('oid', $data->oid)->get();
+        $payment = orders_payment_method::where('oid', $data->oid)->first();
+        $stage = order_stage::where('oid', $data->oid)->first();
+        $productInfo = [];
+        foreach ($product as $item) {
+            $out = product::select('name', 'price')->where('pid', $item->pid)->first();
+            if ($out) {
+                $out['qty'] = $item->qty;
+                $productInfo[] = $out;
+            }
+        }
+        return response()->json([
+            'address' => $address,
+            'order' => $order,
+            'product' => $productInfo,
+            'payment' => $payment,
+            'stage' => $stage
+        ]);
     }
 }

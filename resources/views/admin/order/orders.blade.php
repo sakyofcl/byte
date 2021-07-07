@@ -7,6 +7,49 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Manage Products | Admin </title>
     {{-- css --}}
+    <style>
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 0 solid transparent;
+            border-radius: 0;
+        }
+
+        .mailbox-widget .custom-tab .nav-item .nav-link {
+            border: 0;
+            color: #fff;
+            border-bottom: 3px solid transparent;
+        }
+
+        .mailbox-widget .custom-tab .nav-item .nav-link.active {
+            background: #e8e8e8;
+            border-radius: 0;
+            color: #fff;
+            border-bottom: 3px solid #007bff;
+        }
+
+        .no-wrap td,
+        .no-wrap th {
+            white-space: nowrap;
+        }
+
+        .table td,
+        .table th {
+            padding: .9375rem .4rem;
+            vertical-align: top;
+            border-top: 1px solid rgba(120, 130, 140, .13);
+        }
+
+        .font-light {
+            font-weight: 300;
+        }
+
+    </style>
     @include('./admin/csslink/css')
     <link rel="stylesheet" href="{{ asset('assets/admin/css/search_bar.css') }}">
 </head>
@@ -83,69 +126,65 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <table id="example" class="table table-hover dataTable no-footer dtr-inline w-100"
-                                    cellspacing="0" width="100%" role="grid" aria-describedby="example_info">
-                                    <thead>
-                                        <tr role="row">
-                                            <th>
-                                                #Id
-                                            </th>
-                                            <th>
-                                                Name
-                                            </th>
-                                            <th>
-                                                Price
-                                            </th>
-                                            <th>
-                                                Stock
-                                            </th>
-                                            <th>
-                                                Category
-                                            </th>
-                                            <th>
-                                                Product Code
-                                            </th>
-                                            <th>
-                                                Actions
-                                            </th>
-                                        </tr>
-                                    </thead>
 
-                                    <tbody id="containProductData">
-                                        
-                                            <tr role="row">
-                                                <td>dasd</td>
-                                                <td>das</td>
-                                                <td>dasd</td>
-                                                <td>das</td>
-                                                <td>
-                                                    <span class="badge badge-primary text-uppercase rounded-0 p-1">
-                                                      fdgdfg
-                                                    </span>
-                                                    <i class="fas fa-chevron-right"></i>
 
-                                                    <span class="badge badge-secondary rounded-0 text-uppercase p-1">
-                                                       ffdf
-                                                    </span>
+                                <div class="card">
+                                    <div class="card-body bg-light  mailbox-widget pb-0 pt-0">
 
-                                                </td>
-                                                <td>dsada</td>
-                                                <td>
-                                                    <a href="editproduct/" class="btn btn-icon btn-pill btn-primary"
-                                                        data-toggle="tooltip" title="Edit">
-                                                        <i class="fa fa-fw fa-edit"></i>
-                                                    </a>
-                                                    <a href="deleteproduct/
-                                                        class="btn btn-icon btn-pill btn-danger" data-toggle="tooltip"
-                                                        title="Delete">
-                                                        <i class="fa fa-fw fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                       
-                                    </tbody>
-                                </table>
-                                <div id="example_processing" class="dataTables_processing card" style="display: none;">
+                                        <ul class="nav nav-tabs custom-tab border-bottom-0 " id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active  p-3" id="inbox-tab" data-toggle="tab"
+                                                    aria-controls="inbox" href="#new" role="tab" aria-selected="true">
+                                                    <span class="d-block d-md-none"><i class="ti-email"></i></span>
+                                                    <span
+                                                        class="d-none d-md-block font-weight-bold text-dark text-capitalize">New
+                                                        ({{ $totalNewOrder }})</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link p-3" id="sent-tab" data-toggle="tab"
+                                                    aria-controls="sent" href="#accept" role="tab"
+                                                    aria-selected="false">
+                                                    <span class="d-block d-md-none"><i class="ti-export"></i></span>
+                                                    <span
+                                                        class="d-none d-md-block font-weight-bold text-dark text-capitalize">Accepted
+                                                        ({{ $totalAcceptedOrder }})</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item ">
+                                                <a class="nav-link p-3" id="spam-tab" data-toggle="tab"
+                                                    aria-controls="spam" href="#complete" role="tab"
+                                                    aria-selected="false">
+                                                    <span class="d-block d-md-none"><i class="ti-panel"></i></span>
+                                                    <span
+                                                        class="d-none d-md-block font-weight-bold text-dark text-capitalize">Completed
+                                                        ({{$totalCompleteOrder}})</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+
+                                    <div class="tab-content" id="myTabContent">
+                                        {{-- @include('./admin/order/new-order') --}}
+                                        <div class="tab-pane fade show active" id="new" role="tabpanel"
+                                            aria-labelledby="profile-tab">
+                                            @include('./admin/order/new-order')
+                                        </div>
+                                        <div class="tab-pane fade" id="accept" role="tabpanel"
+                                            aria-labelledby="profile-tab">
+                                            @include('./admin/order/accepted-order')
+                                        </div>
+                                        <div class="tab-pane fade" id="complete" role="tabpanel"
+                                            aria-labelledby="profile-tab">
+                                            @include('./admin/order/complete-order')
+                                        </div>
+                                    </div>
+                                    @include('./admin/popup-model/order-check')
+
+                                </div>
+                                <div id="action-message" class="dataTables_processing card d-none"  >
                                     Processing...</div>
                             </div>
                         </div>
@@ -180,6 +219,8 @@
     </div>
 
     @include('./admin/jslink/js')
+    <script src="/assets/admin/js/api/check-order.js"></script>
+    <script src="/assets/admin/js/api/order-status.js"></script>
 
 </body>
 
