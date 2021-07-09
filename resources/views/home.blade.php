@@ -316,7 +316,7 @@
                                     <div class="d-flex flex-column h-100 content-shop">
                                         <img src='/assets/images/shop/projeter.jpg'>
                                         <span class="text-capitalize text-center w-100">
-                                            Projecters
+                                            Projectors
                                         </span>
                                     </div>
                                 </a>
@@ -370,7 +370,7 @@
                                     <div class="d-flex flex-column h-100 content-shop">
                                         <img src='/assets/images/shop/pos.jpg'>
                                         <span class="text-capitalize text-center w-100">
-                                            Pos Tools
+                                            POS Tools
                                         </span>
                                     </div>
                                 </a>
@@ -380,7 +380,7 @@
                                     <div class="d-flex flex-column h-100 content-shop">
                                         <img src='/assets/images/shop/hdd.jpg'>
                                         <span class="text-capitalize text-center w-100">
-                                            Harddisk
+                                            Hard disk
                                         </span>
                                     </div>
                                 </a>
@@ -424,7 +424,7 @@
                                     <div class="d-flex flex-column h-100 content-shop">
                                         <img src='/assets/images/shop/projeter.jpg'>
                                         <span class="text-capitalize text-center w-100">
-                                            Projecters
+                                            Projectors
                                         </span>
                                     </div>
                                 </a>
@@ -442,7 +442,7 @@
                                     <div class="d-flex flex-column h-100 content-shop">
                                         <img src='/assets/images/shop/projeter.jpg'>
                                         <span class="text-capitalize text-center w-100">
-                                            Projecters
+                                            Projectors
                                         </span>
                                     </div>
                                 </a>

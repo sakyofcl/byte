@@ -17,3 +17,8 @@
 <script src="{{ asset('assets/js/axios.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
 <script src="{{ asset('assets/js/api/search.js') }}"></script>
+
+
+{{-- facebook api --}}
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v11.0" nonce="4o1NooZM"></script>
