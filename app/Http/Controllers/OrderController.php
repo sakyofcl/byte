@@ -195,9 +195,4 @@ class OrderController extends Controller
             'stage' => $stage
         ]);
     }
-
-    public function payhereTest()
-    {
-        return view('payhere-demo');
-    }
 }

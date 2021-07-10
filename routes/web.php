@@ -89,8 +89,7 @@ Route::get('/testmain/{id}', [ProductController::class, 'testmain']);
 Route::get('/checkout/{id}', [OrderController::class, 'index']);
 Route::get('/checkout', ['middleware' => 'checkout', 'uses' => 'OrderController@default']);
 Route::post('/store', [OrderController::class, 'store']);
-#test payhere
-Route::get('/payhere', [OrderController::class, 'payhereTest']);
+
 
 
 # cart route {it used session}
