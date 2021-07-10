@@ -53,7 +53,7 @@
                         </div>
                         <form action="https://www.payhere.lk/pay/checkout" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="merchant_id" value="1217678">
+                            <input type="hidden" name="merchant_id" value="217939">
                             <input type="hidden" name="return_url" value="http://byte.lk/return">
                             <input type="hidden" name="cancel_url" value="http://byte.lk/cancel">
                             <input type="hidden" name="notify_url" value="http://byte.lk/notify">
@@ -69,11 +69,11 @@
                             <div class="col-md-12 d-flex flex-row p-0">
                                 <div class="form-group col-md-6 pl-0">
                                     <label for="name">FIRST NAME *</label>
-                                    <input name="name" id="name" class="form-control" type="text">
+                                    <input name="name" id="first_name" class="form-control" type="text">
                                 </div>
                                 <div class="form-group col-md-6 pr-0">
                                     <label for="name">LAST NAME *</label>
-                                    <input name="name" id="name" class="form-control" type="text">
+                                    <input name="name" id="last_name" class="form-control" type="text">
                                 </div>
                             </div>
 
@@ -85,7 +85,7 @@
 
                             <div class="form-group">
                                 <label for="number">PHONE *</label>
-                                <input name="number" id="number" class="form-control" type="number">
+                                <input name="phone" id="number" class="form-control" type="number">
                             </div>
 
                             <div class="form-group">
@@ -97,7 +97,7 @@
                             <div class="col-md-12 d-flex flex-row p-0">
                                 <div class="form-group col-md-6 pl-0">
                                     <label for="town">TOWN/CITY *</label>
-                                    <input name="town" id="town" class="form-control" type="text">
+                                    <input name="city" id="town" class="form-control" type="text">
                                 </div>
 
                                 <div class="form-group col-md-6 pr-0">
