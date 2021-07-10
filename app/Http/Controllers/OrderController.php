@@ -195,6 +195,7 @@ class OrderController extends Controller
             'stage' => $stage
         ]);
     }
+<<<<<<< HEAD
 
     public function payhereTest()
     {
@@ -204,4 +205,6 @@ class OrderController extends Controller
     {
         return view('newCheckout');
     }
+=======
+>>>>>>> parent of 788facd (test payhere)
 }
