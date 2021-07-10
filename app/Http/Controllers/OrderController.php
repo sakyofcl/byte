@@ -196,6 +196,7 @@ class OrderController extends Controller
         ]);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public function payhereTest()
     {
@@ -205,6 +206,8 @@ class OrderController extends Controller
     {
         return view('newCheckout');
     }
+=======
+>>>>>>> parent of 788facd (test payhere)
 =======
 >>>>>>> parent of 788facd (test payhere)
 }

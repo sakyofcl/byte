@@ -90,9 +90,13 @@ Route::get('/checkout/{id}', [OrderController::class, 'index']);
 Route::get('/checkout', ['middleware' => 'checkout', 'uses' => 'OrderController@default']);
 Route::post('/store', [OrderController::class, 'store']);
 <<<<<<< HEAD
+<<<<<<< HEAD
 Route::get('/new-check', [OrderController::class, 'newCheck']);
 #test payhere
 Route::get('/payhere', [OrderController::class, 'payhereTest']);
+=======
+
+>>>>>>> parent of 788facd (test payhere)
 =======
 
 >>>>>>> parent of 788facd (test payhere)
