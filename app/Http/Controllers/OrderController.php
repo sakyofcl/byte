@@ -195,19 +195,4 @@ class OrderController extends Controller
             'stage' => $stage
         ]);
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    public function payhereTest()
-    {
-        return view('payhere-demo');
-    }
-    public function newCheck()
-    {
-        return view('newCheckout');
-    }
-=======
->>>>>>> parent of 788facd (test payhere)
-=======
->>>>>>> parent of 788facd (test payhere)
 }
