@@ -200,4 +200,8 @@ class OrderController extends Controller
     {
         return view('payhere-demo');
     }
+    public function newCheck()
+    {
+        return view('newCheckout');
+    }
 }
