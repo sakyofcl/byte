@@ -70,7 +70,7 @@ Route::get('/edit/stock/{id}', [ProductController::class, 'editProductStock']);
 #Admin Add
 Route::post('/add-brand', [brandController::class, 'addBrand']);
 
-/*-----[ ORDER ]------*/
+/*-----[ ORDER  ]------*/
 Route::get('/order', [adminOrderController::class, 'index']);
 Route::get('/order/accept', [adminOrderController::class, 'updateOrderStage']);
 Route::get('/order/cancel', [adminOrderController::class, 'updateOrderStage']);
@@ -89,10 +89,13 @@ Route::get('/testmain/{id}', [ProductController::class, 'testmain']);
 Route::get('/checkout/{id}', [OrderController::class, 'index']);
 Route::get('/checkout', ['middleware' => 'checkout', 'uses' => 'OrderController@default']);
 Route::post('/store', [OrderController::class, 'store']);
+Route::get('/buy/product', [cartController::class, 'addcart']);
 
-# cart route it used session
+
+# cart route {it used session}
 Route::get('/cart', [cartController::class, 'index']);
 Route::get('/addcart/{id}', [cartController::class, 'addcart']);
 Route::get('/clear-cart', [cartController::class, 'clearCart']);
 Route::get('/remove-cart-item/{id}', [cartController::class, 'removeItem']);
 Route::post('/updateqty', [cartController::class, 'update']);
+Route::get('/add/cart', [cartController::class, 'addcart']);
