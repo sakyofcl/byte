@@ -18,6 +18,13 @@ $(document).ready(() => {
 
     function handleLabelChange(e){
         const ele=document.getElementsByName('payment');
+        if (e.target.id == "bank") {
+            $('#bankslip').css({ display: 'block' });
+            state['slip'] = true;
+        } else {
+            $('#bankslip').css({ display: 'none' });
+            state['slip'] = false;
+        }
         for (let index = 0; index < ele.length; index++) {
             if(ele[index].getAttribute('option')==e.target.id){
                 if(!ele[index].disabled){
@@ -76,7 +83,7 @@ function handleChange(e) {
     if (e.target.name == "payment") {
 
         if (e.target.value) {
-            if (e.target.value == 2) {
+            if (e.target.value == "bank") {
                 $('#bankslip').css({ display: 'block' });
                 state['slip'] = true;
             } else {

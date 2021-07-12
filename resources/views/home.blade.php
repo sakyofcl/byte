@@ -503,7 +503,7 @@
 
                                                 <li>
 
-                                                    <a href="/addcart/{{ $item->pid }}">
+                                                    <a href="/add/cart?pid={{ $item->pid }}&qty=1&type=cart">
 
                                                         <i class="icon-basket-loaded"></i>
 

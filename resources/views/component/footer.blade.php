@@ -71,11 +71,11 @@
                         <h6 class="widget_title text-danger">Useful Links</h6>
 
                         <ul class="widget_links">
-                            <li ><a href="/" >Home</a></li>
-                            <li class="text-white" ><a href="/product" >Product</a></li>
-                            <li class="text-white"><a href="/about" >About</a></li>
-                            <li class="text-white"> <a href="/contact" >Contact</a></li>
-                            <li class="text-white"><a href="#" >Faq</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li class="text-white"><a href="/product">Product</a></li>
+                            <li class="text-white"><a href="/about">About</a></li>
+                            <li class="text-white"> <a href="/contact">Contact</a></li>
+                            <li class="text-white"><a href="#">Faq</a></li>
                         </ul>
 
                     </div>
@@ -116,13 +116,13 @@
                             <!--
                             <iframe class="w-100 h-100" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fbyte.lk%2F&tabs=page&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="100%"  style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                             -->
-                            
-                            <div class="fb-page w-100" data-href="https://www.facebook.com/byte.lk/" data-tabs="page" data-small-header="false" data-adapt-container-width="true"  data-show-facepile="false">
+
+                            <div class="fb-page w-100" data-href="https://www.facebook.com/byte.lk/" data-tabs="page" data-small-header="false" data-adapt-container-width="true" data-show-facepile="false">
                                 <blockquote cite="https://www.facebook.com/byte.lk/" class="fb-xfbml-parse-ignore">
                                     <a href="https://www.facebook.com/byte.lk/">Byte.lk</a>
                                 </blockquote>
                             </div>
-                            
+
                         </ul>
 
                     </div>
@@ -145,7 +145,7 @@
 
                 <div class="col-lg-4">
 
-                    <p class="mb-lg-0 text-center text-white">© 2021 All Rights Reserved by byte.lk | <span style="letter-spacing:2px;">v1.1.3</span><br>
+                    <p class="mb-lg-0 text-center text-white">© 2021 All Rights Reserved by byte.lk | <span style="letter-spacing:2px;">v1.1.4</span><br>
                         <a class="text-white" href="http://royaltech.lk" target="_blank">
                             <span>Developed By Royaltech </span>
                             <span>

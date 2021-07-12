@@ -16,48 +16,47 @@
         <div class="col-md-12 p-3">
             <div id="new-arrivals-carousel" class="owl-carousel">
                 @if (Session::get('newproduct') !== null)
-                    @foreach (Session::get('newproduct') as $items)
-                        <div class="item">
-                            <div class="product">
-                                <div class="product_img">
-                                    <a href="index.html">
-                                        <?php $newProductImage = 'products/' . $items->image; ?>
-                                        <img src={{ asset($newProductImage) }} alt="product_img1">
-                                    </a>
-                                    <div class="product_action_box">
-                                        <ul class="list_none pr_action_btn">
-                                            <li class="add-to-cart">
-                                                <a href="/addcart/{{ $items->pid }}">
-                                                    <i class="icon-basket-loaded"></i>
-                                                    Add To Cart
-                                                </a>
-                                            </li>
+                @foreach (Session::get('newproduct') as $items)
+                <div class="item">
+                    <div class="product">
+                        <div class="product_img">
+                            <a href="index.html">
+                                <?php $newProductImage = 'products/' . $items->image; ?>
+                                <img src={{ asset($newProductImage) }} alt="product_img1">
+                            </a>
+                            <div class="product_action_box">
+                                <ul class="list_none pr_action_btn">
+                                    <li class="add-to-cart">
+                                        <a href="/add/cart?pid={{ $items->pid }}&qty=1&type=cart">
+                                            <i class="icon-basket-loaded"></i>
+                                            Add To Cart
+                                        </a>
+                                    </li>
 
-                                            <li><a href="/productinfo/{{ strtolower(preg_replace('/\s+/', '-', $items->name)) }}/{{ $items->pid }}" class="popup-ajax"><i class="fas fa-shopping-bag"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="icon-heart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_info">
-                                    <h6 class="product_title"><a
-                                            href="/productinfo/{{ strtolower(preg_replace('/\s+/', '-', $items->name)) }}/{{ $items->pid }}">{{ $items->name }}</a>
-                                    </h6>
-
-                                    <div class="product_price">
-                                        <span class="price">Rs.{{ number_format($items->price) }}</span>
-                                    </div>
-
-                                    <div class="pr_desc">
-                                        <p>
-                                            {{ $items->description }}
-                                        </p>
-                                    </div>
-
-                                </div>
+                                    <li><a href="/productinfo/{{ strtolower(preg_replace('/\s+/', '-', $items->name)) }}/{{ $items->pid }}" class="popup-ajax"><i class="fas fa-shopping-bag"></i></a>
+                                    </li>
+                                    <li><a href="#"><i class="icon-heart"></i></a></li>
+                                </ul>
                             </div>
                         </div>
-                    @endforeach
+                        <div class="product_info">
+                            <h6 class="product_title"><a href="/productinfo/{{ strtolower(preg_replace('/\s+/', '-', $items->name)) }}/{{ $items->pid }}">{{ $items->name }}</a>
+                            </h6>
+
+                            <div class="product_price">
+                                <span class="price">Rs.{{ number_format($items->price) }}</span>
+                            </div>
+
+                            <div class="pr_desc">
+                                <p>
+                                    {{ $items->description }}
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                @endforeach
                 @endif
             </div>
         </div>

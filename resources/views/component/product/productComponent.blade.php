@@ -15,7 +15,7 @@ function productCart($img, $pid, $name, $price, $description)
                     <ul class="list_none pr_action_btn">
 
                         <li class="add-to-cart">
-                            <a href="/addcart/' . $pid . '">
+                            <a href="/add/cart?pid=' . $pid . '&qty=1&type=cart">
                                 <i class="icon-basket-loaded"></i>
                                     Add To Cart
                             </a>

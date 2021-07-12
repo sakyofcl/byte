@@ -152,37 +152,18 @@
 
                             <div class="cart-product-quantity">
                                 <div class="quantity">
-                                    <form action="/updateqty" method="post">
-                                        @csrf
-                                        @if(Session::has('cart'))
-                                        @foreach (Session::get('cart') as $cart)
-                                        @if($cart['id']==$items->pid)
-                                        <input type="text" value={{$cart['id']}} name="pid" hidden>
-                                        <input type="number" name="quantity" value={{ $cart["qty"] }} class="qty" id="qty" style="margin:4px;" required>
-                                        <button type="submit" class="plus rounded-0 border" id="#" style="height:36px;">
-                                            <i class="fas fa-recycle"></i>
-                                        </button>
-                                        @break
-                                        @endif
-
-                                        @endforeach
-                                        @endif
-                                    </form>
+                                    <input type="button" value="-" class="minus" id="minus">
+                                    <input type="number" name="quantity" value="1" class="qty" id="qty" min="1">
+                                    <input type="button" value="+" class="plus" id="plus">
                                 </div>
                             </div>
 
                             <div class="cart_btn">
-
-                                <a href="/addcart/{{ $items->pid }}" style="margin-right: 10px;">
-                                    <button class="btn btn-fill-out btn-addtocart " type="button" style="width:150px;">
-                                        <i class="icon-basket-loaded"></i>
-                                        Cart
-                                    </button>
+                                <a href="/add/cart?pid={{$items->pid}}&qty=1&type=cart" id="add-cart" class="btn btn-fill-out" type="button" style="width:150px;">
+                                    <i class="fas fa-cart-plus"></i> Cart
                                 </a>
-                                <a href="/checkout/{{ $items->pid }}" id="buy-product">
-                                    <button class="btn btn-fill-out-green btn-addtocart" type="button" style="width:150px;">
-                                        <i class="fas fa-shopping-bag"></i> Buy
-                                    </button>
+                                <a href="/buy/product?pid={{$items->pid}}&qty=1&type=buy" id="buy-product" pid="{{ $items->pid }}" class="btn btn-fill-out-green btn-addtocart" type="button" style="width:150px;">
+                                    <i class="fas fa-shopping-bag"></i> Buy
                                 </a>
                             </div>
                         </div>
@@ -308,7 +289,8 @@
 
     <!-- js link -->
     @include('./jslink/js')
-    <script src="{{ asset('assets/js/validation/direct-checkout.js')}}"></script>
+    <script src="{{ asset('/assets/js/validation/direct-checkout.js')}}"></script>
+    <script src="{{ asset('/assets/js/api/add-cart-api.js')}}"></script>
 </body>
 
 </html>

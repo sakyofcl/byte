@@ -168,7 +168,7 @@
                                     <h4>SHIPPING & BILLING</h4>
                                 </div>
                                 <div class="heading_s1">
-                                    <p class="text-dark mb-1">Ship to:</p>
+                                    <p class="text-dark mb-1">Ship to :</p>
                                     <p style="font-size:13px;" class="text-capitalize">
                                         <span id="shipname"></span><br />
                                         <span id="shipaddrs"></span><br />
