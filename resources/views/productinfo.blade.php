@@ -152,19 +152,49 @@
 
                             <div class="cart-product-quantity">
                                 <div class="quantity">
+                                    <?php
+                                    $cartqty = 0;
+                                    if (session('cart')) {
+                                        foreach (session('cart') as $cart) {
+                                            if ($cart['id'] == $items->pid) {
+                                                $cartqty = $cart['qty'];
+                                                break;
+                                            } else {
+                                                $cartqty = 0;
+                                            }
+                                        }
+                                    }
+
+                                    ?>
                                     <input type="button" value="-" class="minus" id="minus">
+
+                                    @if($cartqty==0)
                                     <input type="number" name="quantity" value="1" class="qty" id="qty" min="1">
+                                    @else
+                                    <input type="number" name="quantity" value="{{$cartqty}}" class="qty" id="qty" min="1">
+                                    @endif
                                     <input type="button" value="+" class="plus" id="plus">
                                 </div>
                             </div>
 
                             <div class="cart_btn">
+                                @if($cartqty==0)
                                 <a href="/add/cart?pid={{$items->pid}}&qty=1&type=cart" id="add-cart" class="btn btn-fill-out" type="button" style="width:150px;">
                                     <i class="fas fa-cart-plus"></i> Cart
                                 </a>
                                 <a href="/buy/product?pid={{$items->pid}}&qty=1&type=buy" id="buy-product" pid="{{ $items->pid }}" class="btn btn-fill-out-green btn-addtocart" type="button" style="width:150px;">
                                     <i class="fas fa-shopping-bag"></i> Buy
                                 </a>
+                                @else
+                                <a href="/add/cart?pid={{$items->pid}}&qty={{$cartqty}}&type=cart" id="add-cart" class="btn btn-fill-out" type="button" style="width:150px;">
+                                    <i class="fas fa-cart-plus"></i> Cart
+                                </a>
+                                <a href="/buy/product?pid={{$items->pid}}&qty={{$cartqty}}&type=buy" id="buy-product" pid="{{ $items->pid }}" class="btn btn-fill-out-green btn-addtocart" type="button" style="width:150px;">
+                                    <i class="fas fa-shopping-bag"></i> Buy
+                                </a>
+                                @endif
+
+
                             </div>
                         </div>
                         <hr />

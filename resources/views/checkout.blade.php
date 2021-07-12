@@ -221,7 +221,7 @@
                                         @foreach (Session::get('cart') as $items)
                                         <tr>
                                             <td>
-                                                <a href="/productinfo/{{strtolower( preg_replace('/\s+/','-', $items['name']) ) }}/{{ $items['id'] }}">
+                                                <a href="/productinfo/{{str_replace(' ', '-', str_replace('/', '-' , $items['name']))}}/{{$items['id']}}">
                                                     {{ $items['name'] }}
                                                 </a>
                                                 <span class="product-qty">x {{ $items['qty'] }}</span>

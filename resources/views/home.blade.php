@@ -561,7 +561,7 @@
 
                                         <div class="add-to-cart">
 
-                                            <a href="/checkout/{{ $item->pid }}" class="btn btn-fill-out-green border-success pl-4 pr-4 pt-2 pb-2">
+                                            <a href="/buy/product?pid={{$item->pid}}&qty=1&type=buy" class="btn btn-fill-out-green border-success pl-4 pr-4 pt-2 pb-2">
 
                                                 <i class="fas fa-shopping-bag"></i>
 

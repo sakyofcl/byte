@@ -99,3 +99,4 @@ Route::get('/clear-cart', [cartController::class, 'clearCart']);
 Route::get('/remove-cart-item/{id}', [cartController::class, 'removeItem']);
 Route::post('/updateqty', [cartController::class, 'update']);
 Route::get('/add/cart', [cartController::class, 'addcart']);
+Route::get('/clear/cart', [cartController::class, 'clearCart']);

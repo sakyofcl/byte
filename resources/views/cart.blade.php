@@ -52,43 +52,42 @@
                                 </thead>
                                 <tbody>
                                     @if(Session::has('cart'))
-                                        @foreach (Session::get('cart') as $items)
-                                            <tr>
-                                                <td class="product-thumbnail">
-                                                    <a href="#">
-                                                        <?php $img = 'products/' . $items['photo']; ?>
-                                                        <img src={{ asset($img) }}>
-                                                    </a>
-                                                </td>
-                                                <td class="product-name text-nowrap" data-title="Product">
-                                                    <a href="/productinfo/{{ $items['id'] }}">{{ $items['name'] }}
-                                                    </a>
-                                                </td>
-                                                <td class="product-price text-nowrap" data-title="Price">
-                                                    Rs. {{ number_format($items['price']) }}
-                                                </td>
-                                                <td class="product-quantity" data-title="Quantity">
-                                                    <div class="quantity d-flex flex-nowrap">
-                                                        <form  action="/updateqty" method="post" class="d-flex flex-nowrap">
-                                                            @csrf
-                                                            <input type="text" value={{$items['id']}} name="pid" hidden>
-                                                            <input type="number" name="quantity" value={{ $items['qty'] }}
-                                                            title="Qty" class="qty" id={{$items['id']}}>
-                                                            
-                                                            <button type="submit" class="plus rounded-0" id="{{$items['id']}}"><i class="fas fa-recycle"></i></button>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                                <td class="product-subtotal text-nowrap" data-title="Total">
-                                                    Rs. {{ number_format($items['price'] * $items['qty']) }}
-                                                </td>
-                                                <td class="product-remove" data-title="Remove">
-                                                    <a href="/remove-cart-item/{{ $items['id'] }}">
-                                                        <i class="ti-close"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach (Session::get('cart') as $items)
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#">
+                                                <?php $img = 'products/' . $items['photo']; ?>
+                                                <img src={{ asset($img) }}>
+                                            </a>
+                                        </td>
+                                        <td class="product-name text-nowrap" data-title="Product">
+                                            <a href="/productinfo/{{str_replace(' ', '-', str_replace('/', '-' , $items['name']))}}/{{$items['id']}}">{{ $items['name'] }}
+                                            </a>
+                                        </td>
+                                        <td class="product-price text-nowrap" data-title="Price">
+                                            Rs. {{ number_format($items['price']) }}
+                                        </td>
+                                        <td class="product-quantity" data-title="Quantity">
+                                            <div class="quantity d-flex flex-nowrap">
+                                                <form action="/updateqty" method="post" class="d-flex flex-nowrap">
+                                                    @csrf
+                                                    <input type="text" value={{$items['id']}} name="pid" hidden>
+                                                    <input type="number" name="quantity" value={{ $items['qty'] }} title="Qty" class="qty" id={{$items['id']}}>
+
+                                                    <button type="submit" class="plus rounded-0" id="{{$items['id']}}"><i class="fas fa-recycle"></i></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal text-nowrap" data-title="Total">
+                                            Rs. {{ number_format($items['price'] * $items['qty']) }}
+                                        </td>
+                                        <td class="product-remove" data-title="Remove">
+                                            <a href="/remove-cart-item/{{ $items['id'] }}">
+                                                <i class="ti-close"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                     @endif
                                 </tbody>
                             </table>
@@ -111,18 +110,21 @@
                                 {{-- calculate total price --}}
                                 <?php $totalprice = 0; ?>
                                 @if(Session::has('cart'))
-                                    @if (Session::get('cart'))
-                                        @foreach (Session::get('cart') as $items)
-                                            <?php $totalprice = $totalprice + $items['price'] *
-                                            $items['qty']; ?>
-                                        @endforeach
-                                        <span>Rs.{{ number_format($totalprice) }}</span>
-                                    @else
-                                        <span>Rs.{{ number_format($totalprice) }}</span>
-                                    @endif
+                                @if (Session::get('cart'))
+                                @foreach (Session::get('cart') as $items)
+                                <?php $totalprice = $totalprice + $items['price'] *
+                                    $items['qty']; ?>
+                                @endforeach
+                                <span>Rs.{{ number_format($totalprice) }}</span>
+                                @else
+                                <span>Rs.{{ number_format($totalprice) }}</span>
+                                @endif
                                 @endif
                             </span>
                         </span>
+                        <a href="/clear/cart" class="mr-2">
+                            <button class="btn btn-fill-out checkout" type="submit">Clear Cart</button>
+                        </a>
                         <a href="/checkout">
                             <button class="btn btn-fill-out-green checkout" type="submit">Checkout</button>
                         </a>
