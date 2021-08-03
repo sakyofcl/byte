@@ -144,7 +144,7 @@
 
     <!-- js link -->
     @include('./jslink/js')
-    <script src="{{ asset('assets/js/api/cart.js') }}"></script>
+    <script src="/assets/js/api/cart.js"></script>
 
 </body>
 

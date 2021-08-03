@@ -8,7 +8,7 @@
     <title>Order Completed | Byte.lk</title>
     <!-- style sheets -->
     @include('./csslink/css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/invoice.css') }}" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/invoice.css" />
 </head>
 
 <body>
@@ -76,8 +76,8 @@
 
     <!-- js link -->
     @include('./jslink/js')
-    <script src="{{ asset('assets/admin/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/htmltoimg.js') }}"></script>
+    <script src="/assets/admin/js/jquery.min.js"></script>
+    <script src="/assets/js/htmltoimg.js"></script>
 
     <script>
         $(document).ready(() => {

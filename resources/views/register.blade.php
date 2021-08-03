@@ -104,8 +104,7 @@
 
                                             <label class="gl-label" for="reg-fname">NAME *</label>
 
-                                            <input class="input-text input-text--primary-style" type="text"
-                                                id="reg-fname" placeholder="Name">
+                                            <input class="input-text input-text--primary-style" type="text" id="reg-fname" placeholder="Name">
                                         </div>
 
                                         <div class="gl-inline">
@@ -114,8 +113,7 @@
                                                 <!--====== Date of Birth Select-Box ======-->
 
                                                 <span class="gl-label">BIRTHDAY</span>
-                                                <div class="gl-dob"><select
-                                                        class="select-box select-box--primary-style">
+                                                <div class="gl-dob"><select class="select-box select-box--primary-style">
                                                         <option selected>Month</option>
                                                         <option value="male">January</option>
                                                         <option value="male">February</option>
@@ -138,8 +136,7 @@
                                             </div>
                                             <div class="u-s-m-b-30">
 
-                                                <label class="gl-label" for="gender">GENDER</label><select
-                                                    class="select-box select-box--primary-style u-w-100" id="gender">
+                                                <label class="gl-label" for="gender">GENDER</label><select class="select-box select-box--primary-style u-w-100" id="gender">
                                                     <option selected>Select</option>
                                                     <option value="male">Male</option>
                                                     <option value="female">Female</option>
@@ -150,36 +147,31 @@
 
                                             <label class="gl-label" for="reg-email">E-MAIL *</label>
 
-                                            <input class="input-text input-text--primary-style" type="text"
-                                                id="reg-email" placeholder="Enter E-mail">
+                                            <input class="input-text input-text--primary-style" type="text" id="reg-email" placeholder="Enter E-mail">
                                         </div>
 
                                         <div class="u-s-m-b-30">
 
                                             <label class="gl-label" for="reg-email">Telephone *</label>
 
-                                            <input class="input-text input-text--primary-style" type="text"
-                                                id="reg-email" placeholder="Telephone">
+                                            <input class="input-text input-text--primary-style" type="text" id="reg-email" placeholder="Telephone">
                                         </div>
 
                                         <div class="u-s-m-b-30">
 
                                             <label class="gl-label" for="reg-password">PASSWORD *</label>
 
-                                            <input class="input-text input-text--primary-style" type="text"
-                                                id="reg-password" placeholder="Enter Password">
+                                            <input class="input-text input-text--primary-style" type="text" id="reg-password" placeholder="Enter Password">
                                         </div>
                                         <div class="u-s-m-b-30">
 
                                             <label class="gl-label" for="reg-password">PASSWORD CONFIRM *</label>
 
-                                            <input class="input-text input-text--primary-style" type="text"
-                                                id="reg-password" placeholder="Password confirm ">
+                                            <input class="input-text input-text--primary-style" type="text" id="reg-password" placeholder="Password confirm ">
                                         </div>
                                         <div class="u-s-m-b-15">
 
-                                            <button class="btn btn--e-transparent-brand-b-2"
-                                                type="submit">CREATE</button>
+                                            <button class="btn btn--e-transparent-brand-b-2" type="submit">CREATE</button>
                                         </div>
 
                                     </form>

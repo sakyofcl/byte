@@ -285,7 +285,7 @@
 
     <!-- js link -->
     @include('./jslink/js')
-    <script src="{{ asset('assets/js/validation/checkout.js') }}"></script>
+    <script src="/assets/js/validation/checkout.js"></script>
 
 </body>
 

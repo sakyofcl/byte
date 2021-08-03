@@ -87,8 +87,7 @@
                                         and track your orders in your account and more.</span>
                                     <div class="u-s-m-b-15">
 
-                                        <a class="l-f-o__create-link btn--e-transparent-brand-b-2"
-                                            href="register">CREATE AN ACCOUNT</a>
+                                        <a class="l-f-o__create-link btn--e-transparent-brand-b-2" href="register">CREATE AN ACCOUNT</a>
                                     </div>
                                     <h1 class="gl-h1">Login</h1>
 
@@ -115,21 +114,18 @@
 
                                             <label class="gl-label" for="login-email">E-MAIL *</label>
 
-                                            <input class="input-text input-text--primary-style" type="text"
-                                                id="login-email" placeholder="Enter E-mail">
+                                            <input class="input-text input-text--primary-style" type="text" id="login-email" placeholder="Enter E-mail">
                                         </div>
                                         <div class="u-s-m-b-30">
 
                                             <label class="gl-label" for="login-password">PASSWORD *</label>
 
-                                            <input class="input-text input-text--primary-style" type="text"
-                                                id="login-password" placeholder="Enter Password">
+                                            <input class="input-text input-text--primary-style" type="text" id="login-password" placeholder="Enter Password">
                                         </div>
                                         <div class="gl-inline">
                                             <div class="u-s-m-b-30">
 
-                                                <button class="btn btn--e-transparent-brand-b-2"
-                                                    type="submit">LOGIN</button>
+                                                <button class="btn btn--e-transparent-brand-b-2" type="submit">LOGIN</button>
                                             </div>
                                             <div class="u-s-m-b-30">
 
@@ -161,22 +157,22 @@
 
     <!-- javascript -->
     @include('./jslink/js')
-    <script src="{{ asset('assets/admin/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/htmltoimg.js') }}"></script>
+    <script src="/assets/admin/js/jquery.min.js"></script>
+    <script src="/assets/js/htmltoimg.js"></script>
     <script>
-        
-        $(document).ready(()=>{
+        $(document).ready(() => {
             var node = document.getElementById('test');
-            var options = {quality: 0.95};
+            var options = {
+                quality: 0.95
+            };
 
-            domtoimage.toJpeg(node, options).then((data)=>{
-                
-                $('#d').attr('href',data);
+            domtoimage.toJpeg(node, options).then((data) => {
+
+                $('#d').attr('href', data);
             })
         })
-
     </script>
-    
+
 </body>
 
 </html>

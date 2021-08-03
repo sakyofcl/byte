@@ -16,7 +16,7 @@
 
     @include('./csslink/css')
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/carousel/component.css') }}" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/carousel/component.css" />
 
 </head>
 
@@ -745,13 +745,13 @@
 
     @include('./jslink/js')
 
-    <script src={{ asset('assets/js/our-service-carousel.js') }}></script>
+    <script src="/assets/js/our-service-carousel.js"></script>
 
-    <script src={{ asset('assets/js/shopbycategory.js') }}></script>
+    <script src="/assets/js/shopbycategory.js"></script>
 
-    <script src={{ asset('assets/js/newarrivals.js') }}></script>
+    <script src="/assets/js/newarrivals.js"></script>
 
-    <script src={{ asset('assets/js/carousel/carousel.js') }}></script>
+    <script src="/assets/js/carousel/carousel.js"></script>
 
     <script>
         var path = window.location.pathname;

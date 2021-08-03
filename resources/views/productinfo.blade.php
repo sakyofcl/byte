@@ -319,8 +319,8 @@
 
     <!-- js link -->
     @include('./jslink/js')
-    <script src="{{ asset('/assets/js/validation/direct-checkout.js')}}"></script>
-    <script src="{{ asset('/assets/js/api/add-cart-api.js')}}"></script>
+    <script src="/assets/js/validation/direct-checkout.js"></script>
+    <script src="/assets/js/api/add-cart-api.js"></script>
 </body>
 
 </html>
