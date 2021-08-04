@@ -54,16 +54,9 @@
                         <form action="/store" method="post" enctype="multipart/form-data">
                             @csrf
 
-
-                            <div class="col-md-12 d-flex flex-row p-0">
-                                <div class="form-group col-md-6 pl-0">
-                                    <label for="name">FIRST NAME *</label>
-                                    <input name="first_name" id="first_name" class="form-control" type="text">
-                                </div>
-                                <div class="form-group col-md-6 pr-0">
-                                    <label for="name">LAST NAME *</label>
-                                    <input name="last_name" id="last_name" class="form-control" type="text">
-                                </div>
+                            <div class="form-group">
+                                <label for="name">NAME *</label>
+                                <input name="name" id="name" class="form-control" type="text">
                             </div>
 
                             <div class="form-group">
@@ -73,7 +66,7 @@
 
                             <div class="form-group">
                                 <label for="number">PHONE *</label>
-                                <input name="phone" id="number" class="form-control" type="number">
+                                <input name="number" id="number" class="form-control" type="number">
                             </div>
 
                             <div class="form-group">
@@ -81,29 +74,9 @@
                                 <input name="address" id="address" class="form-control" type="text">
                             </div>
 
-
-                            <div class="col-md-12 d-flex flex-row p-0">
-                                <div class="form-group col-md-6 pl-0">
-                                    <label for="town">TOWN/CITY *</label>
-                                    <input name="city" id="town" class="form-control" type="text">
-                                </div>
-
-                                <div class="form-group col-md-6 pr-0">
-                                    <div class="custom_select">
-                                        <label for="province">STATE/PROVINCE *</label>
-                                        <select class="form-control" name="province" id="province">
-                                            <option selected value="" disabled>Choose State/Province</option>
-                                            <option value="central">Central</option>
-                                            <option value="eastern">Eastern</option>
-                                            <option value=" North Central">North Central</option>
-                                            <option value="North Western">North Western</option>
-                                            <option value="Sabaragamuwa">Sabaragamuwa</option>
-                                            <option value="Southern">Southern</option>
-                                            <option value="Uva">Uva</option>
-                                            <option value="Western">Western</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="town">TOWN/CITY *</label>
+                                <input name="town" id="town" class="form-control" type="text">
                             </div>
 
                             <div class="form-group">
